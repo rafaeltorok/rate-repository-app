@@ -1,18 +1,24 @@
-// React Native
-import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
+import { Link } from "react-router-native";
 
 const styles = StyleSheet.create({
+  tab: {
+    flex: 1,
+    paddingHorizontal: 16,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20
+  },
   tabText: {
     color: "#ffffff",
+    fontWeight: "bold"
   },
 });
 
-export default function AppBarTab ({ tabName }) {
+export default function AppBarTab({ tabName, link }) {
   return (
-    <View>
-      <Pressable>
-        <Text style={styles.tabText}>{tabName}</Text>
-      </Pressable>
-    </View>
+    <Link to={link} style={styles.tab}>
+      <Text style={styles.tabText}>{tabName}</Text>
+    </Link>
   );
-};
+}

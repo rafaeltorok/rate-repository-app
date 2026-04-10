@@ -5,7 +5,6 @@ import { FlatList, View, StyleSheet } from 'react-native';
 import repositories from '../data/repositories';
 
 // Components
-import AppBar from './AppBar';
 import RepositoryItem from './item/RepositoryItem';
 
 const styles = StyleSheet.create({
@@ -27,7 +26,6 @@ export default function RepositoryList() {
       <FlatList
         data={repositories}
         ItemSeparatorComponent={ItemSeparator}
-        ListHeaderComponent={<AppBar />}
         renderItem={({ item }) =>
           <RepositoryItem repository={item} />
         }
