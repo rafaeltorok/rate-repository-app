@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
   infoSection: {
     display: "flex",
     flexDirection: "column",
-    gap: 5
+    gap: 5,
+    flexShrink: 1,
   },
   nameRow: {
     fontWeight: "bold",
