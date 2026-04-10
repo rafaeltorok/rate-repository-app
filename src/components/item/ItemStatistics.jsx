@@ -4,9 +4,12 @@ import { Text, View, StyleSheet } from 'react-native';
 // Utils
 import formatNumber from "../../utils/formatNumber";
 
+// Styles
+import theme from '../../theme';
+
 const styles = StyleSheet.create({
   row: {
-    margin: 10,
+    margin: theme.spacing.medium,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-evenly"
@@ -15,17 +18,20 @@ const styles = StyleSheet.create({
     display: "flex",
     flex: 1,
     flexDirection: "column",
-    gap: 5,
+    gap: theme.spacing.small,
     alignItems: "center"
   },
   label: {
-    color: "#505050",
+    fontFamily: theme.fonts.main,
+    color: theme.colors.textSecondary,
   },
   data: {
-    fontWeight: "bold",
+    fontFamily: theme.fonts.main,
+    fontWeight: theme.fontWeights.bold,
   },
 });
 
+// Component
 export default function ItemStatistics({ repository }) {
   return (
     <View style={styles.row}>

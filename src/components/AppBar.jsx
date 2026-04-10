@@ -5,15 +5,19 @@ import Constants from 'expo-constants';
 // Components
 import AppBarTab from './AppBarTab';
 
+// Styles
+import theme from '../theme';
+
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: "#24292e",
+    backgroundColor: theme.colors.appBar,
     justifyContent: "space-evenly",
   },
 });
 
+// Component
 export default function AppBar() {
   return (
     <View style={styles.container}>

@@ -14,26 +14,31 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 // CSS Styles
+import theme from "../../theme";
+
 const styles = StyleSheet.create({
   container: {
     display: "flex",
     flexDirection: "column",
-    gap: 20,
-    padding: 30,
+    gap: theme.spacing.large,
+    padding: theme.spacing.veryLarge,
   },
   header: {
+    fontFamily: theme.fonts.main,
     fontWeight: "bold",
-    fontSize: 25,
+    fontSize: theme.fontSize.large,
     textAlign: "center",
   },
   inputField: {
+    fontFamily: theme.fonts.main,
     borderWidth: 1,
-    borderColor: "#757575",
-    borderRadius: 5,
-    padding: 10
+    borderColor: theme.colors.input,
+    borderRadius: theme.borderRadius.small,
+    padding: theme.spacing.medium
   },
   errorField: {
-    borderColor: "#d73a4a",
+    fontFamily: theme.fonts.main,
+    borderColor: theme.colors.error,
   }
 });
 

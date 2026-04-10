@@ -1,38 +1,45 @@
 // React Native
 import { Text, View, Image, StyleSheet } from 'react-native';
 
+// Styles
+import theme from '../../theme';
+
 const styles = StyleSheet.create({
   mainRow: {
     display: "flex",
     flexDirection: "row",
-    gap: 20,
+    gap: theme.spacing.large,
   },
   profilePic: {
     width: 50,
     height: 50,
-    borderRadius: 10
+    borderRadius: theme.borderRadius.medium
   },
   infoSection: {
     display: "flex",
     flexDirection: "column",
-    gap: 5,
+    gap: theme.spacing.small,
     flexShrink: 1,
   },
   nameRow: {
-    fontWeight: "bold",
+    fontFamily: theme.fonts.main,
+    fontWeight: theme.fontWeights.bold,
   },
   descriptionRow: {
-    color: "#505050",
+    fontFamily: theme.fonts.main,
+    color: theme.colors.textSecondary,
   },
   languageRow: {
-    borderRadius: 5,
-    backgroundColor: "#0366d6",
-    color: "white",
-    padding: 5,
+    fontFamily: theme.fonts.main,
+    borderRadius: theme.borderRadius.small,
+    backgroundColor: theme.colors.primary,
+    color: theme.colors.white,
+    padding: theme.spacing.small,
     alignSelf: "flex-start"  // width wraps content
   },
 });
 
+// Component
 export default function ItemHeader({ repository }) {
   return (
     <View style={styles.mainRow}>

@@ -1,22 +1,31 @@
+// React Native
 import { View, Text, StyleSheet } from "react-native";
+
+// Styles
+import theme from "../../theme";
 
 const styles = StyleSheet.create({
   container: {
-    gap: 20,
-    padding: 30,
+    gap: theme.spacing.large,
+    padding: theme.spacing.veryLarge,
   },
   header: {
+    fontFamily: theme.fonts.main,
     textAlign: "center",
-    fontWeight: "bold",
-    fontSize: 25
+    fontWeight: theme.fontWeights.bold,
+    fontSize: theme.fontSize.large
   },
+  content: {
+    fontFamily: theme.fonts.main,
+  }
 });
 
+// Component
 export default function Favorites() {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Favorites</Text>
-      <Text>Your favorite repositories will be displayed in here.</Text>
+      <Text style={styles.content}>Your favorite repositories will be displayed in here.</Text>
     </View>
   );
 };

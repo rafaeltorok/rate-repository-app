@@ -7,6 +7,9 @@ import repositories from '../data/repositories';
 // Components
 import RepositoryItem from './item/RepositoryItem';
 
+// Styles
+import theme from '../theme';
+
 const styles = StyleSheet.create({
   container: {
     display: "flex",
@@ -14,12 +17,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   separator: {
-    height: 10,
+    height: theme.spacing.medium,
   },
 });
 
+// Separator
 const ItemSeparator = () => <View style={styles.separator} />;
 
+// Component
 export default function RepositoryList() {
   return (
     <View style={styles.container}>

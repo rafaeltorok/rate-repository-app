@@ -5,13 +5,17 @@ import { View, StyleSheet } from 'react-native';
 import ItemHeader from './ItemHeader';
 import ItemStatistics from './ItemStatistics';
 
+// Styles
+import theme from '../../theme';
+
 const styles = StyleSheet.create({
   repositoryItem: {
-    padding: 20,
-    backgroundColor: "white"
+    padding: theme.spacing.large,
+    backgroundColor: theme.colors.white,
   },
 });
 
+// Component
 export default function RepositoryItem({ repository }) {
   return (
     <View style={styles.repositoryItem}>

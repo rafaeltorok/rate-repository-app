@@ -11,14 +11,18 @@ import Settings from './tabs/Settings';
 import About from './tabs/About';
 import Faq from './tabs/Faq';
 
+// Styles
+import theme from '../theme';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#e1e4e8"
+    backgroundColor: theme.colors.backgroundColor,
   },
 });
 
-const Main = () => {
+// Main component
+export default function Main() {
   return (
     <View style={styles.container}>
       <AppBar />
@@ -34,5 +38,3 @@ const Main = () => {
     </View>
   );
 };
-
-export default Main;
