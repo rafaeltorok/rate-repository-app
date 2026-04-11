@@ -32,8 +32,6 @@ export default function RepositoryList() {
 
   if (error) return <View><Text>Failed to load repositories</Text></View>;
 
-  console.log(repositories)
-
   return (
     <View style={styles.container}>
       <FlatList
