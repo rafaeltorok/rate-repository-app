@@ -63,7 +63,7 @@ Works at least with Node version v20. If you haven't installed Node or npm, [nvm
     npm run start
     ```
     
-8. Access the Apollo Sandbox at http://localhost:4000
+8. Access the Apollo Sandbox at http:/localhost:4000
 
 ### 🔑 Authentication
 To list all the registered users, you can run this query in the Apollo Sandbox:

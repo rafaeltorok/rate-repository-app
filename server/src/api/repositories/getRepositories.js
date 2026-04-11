@@ -1,7 +1,8 @@
-import { get } from 'lodash';
+import lodash from 'lodash';
+const { get } = lodash;
 
-import githubClient from '../../utils/githubClient';
-import Repository from '../../models/Repository';
+import githubClient from '../../utils/githubClient.js';
+import Repository from '../../models/Repository.js';
 
 const getRepositoryPayload = (
   repository,
