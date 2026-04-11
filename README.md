@@ -4,10 +4,29 @@
 An Android mobile app to rate Github repositories. Based on the project from the React Native section of the FullStackOpen course by MOOC Finland.
 
 ## Table of Contents
+- [Env](#env)
 - [Frontend](#frontend)
 - [Server](#server)
 - [FAQ](#-faq)
 - [Notes](#notes)
+
+
+## Env
+The following environment variables are required:
+
+- Client
+  ```env
+  EXPO_PUBLIC_APOLLO_SERVER_URL=http://<server-ip>:4000/graphql
+  ```
+
+- Server
+  ```env
+  GITHUB_CLIENT_ID=<client-id>
+  GITHUB_CLIENT_SECRET=<client-secret>
+  JWT_SECRET=<secret>
+  ```
+
+Store both `.env` files on their respective root folders, alongside the `package.json` file.
 
 
 ## Frontend
