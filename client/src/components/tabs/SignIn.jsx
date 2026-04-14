@@ -6,24 +6,16 @@ import {
   TextInput, 
   Button 
 } from "react-native";
-
-// React
-import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-native";
 
 // Hooks
 import useSignIn from "../../hooks/useSignIn";
-
-// Utils
-import AuthStorage from "../../utils/authStorage";
 
 // Formik
 import { useFormik } from 'formik';
 
 // Yup
 import * as yup from 'yup';
-
-// Instance of the authentication handling class
-const authStorage = new AuthStorage();
 
 // CSS Styles
 import theme from "../../theme";
@@ -59,17 +51,8 @@ export default function SignIn() {
   // Custom hook to handle user authentication
   const [signIn, result] = useSignIn();
 
-  // Logged in user information
-  const [authToken, setAuthToken] = useState(null)
-
-  // Effect to fetch the current logged in user token
-  useEffect(() => {
-    async function getToken() {
-      const response = await authStorage.getAccessToken();
-      if (response) setAuthToken(response);
-    }
-    getToken();
-  }, []);
+  // React Router hook
+  const navigate = useNavigate();
 
   // Yup validation Schema
   const validationSchema = yup.object().shape({
@@ -89,17 +72,10 @@ export default function SignIn() {
 
     try {
       // Sign in mutation
-      const { data } = await signIn({ username, password });
+      await signIn({ username, password });
 
-      // Set the token on the async storage
-      authStorage.setAccessToken(data.authenticate.accessToken);
-
-      // Set the token on a local state
-      setAuthToken(data.authenticate.accessToken);
-
-      // Retrieve and prints the user token on the console
-      const token = await authStorage.getAccessToken();
-      console.log(token);
+      // Redirect after successful authentication
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
@@ -115,12 +91,6 @@ export default function SignIn() {
     onSubmit
   });
 
-  // Handles the logout option for the user
-  async function handleLogout() {
-    await authStorage.removeAccessToken();
-    setAuthToken(null);
-  }
-
   // Loading screen
   if (result.loading) {
     return (
@@ -132,19 +102,6 @@ export default function SignIn() {
   if (result.error) {
     return (
       <Text style={styles.header}>Failed to authenticate user</Text>
-    );
-  }
-
-  // Logged user screen
-  if (authToken) {
-    return (
-      <View>
-          <Text style={styles.header}>User has logged in.</Text>
-          <Button
-            title="Logout"
-            onPress={handleLogout}
-          />
-      </View>
     );
   }
 

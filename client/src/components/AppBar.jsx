@@ -2,6 +2,10 @@
 import { View, StyleSheet, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
 
+// GraphQL queries
+import { useQuery } from '@apollo/client';
+import { LOGGED_USER } from '../graphql/queries';
+
 // Components
 import AppBarTab from './AppBarTab';
 
@@ -19,11 +23,19 @@ const styles = StyleSheet.create({
 
 // Component
 export default function AppBar() {
+  // Fetches the currently logged in user data if present
+  const { data } = useQuery(LOGGED_USER);
+
+  // Renders the Repositories and Sign-out tabs for logged users only
   return (
     <View style={styles.container}>
       <ScrollView horizontal>
-        <AppBarTab tabName={"Repositories"} link={"/"} />
-        <AppBarTab tabName={"Sign-in"} link={"/signin"} />
+        {data?.me && <AppBarTab tabName={"Repositories"} link={"/"} />}
+        {data?.me ? (
+          <AppBarTab tabName={"Sign-out"} link={"/signout"} />
+        ) : (
+          <AppBarTab tabName={"Sign-in"} link={"/signin"} />
+        )}
         <AppBarTab tabName={"Favorites"} link={"/favorites"} />
         <AppBarTab tabName={"Settings"} link={"/settings"} />
         <AppBarTab tabName={"About"} link={"/about"} />

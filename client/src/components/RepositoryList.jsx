@@ -28,10 +28,13 @@ const ItemSeparator = () => <View style={styles.separator} />;
 export default function RepositoryList() {
   const { repositories, loading, error } = useRepositories();
 
+  // Loading screen
   if (loading) return <View><Text>Loading repositories...</Text></View>;
 
+  // Error screen
   if (error) return <View><Text>Failed to load repositories</Text></View>;
 
+  // Repositories list
   return (
     <View style={styles.container}>
       <FlatList

@@ -46,3 +46,12 @@ export const AUTHENTICATE_USER = gql`
     }
   }
 `;
+
+export const LOGGED_USER = gql`
+  query {
+    me {
+      id
+      username
+    }
+  }
+`;
