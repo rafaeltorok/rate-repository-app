@@ -19,6 +19,12 @@ const styles = StyleSheet.create({
   separator: {
     height: theme.spacing.medium,
   },
+  header: {
+    fontFamily: theme.fonts.main,
+    fontWeight: "bold",
+    fontSize: theme.fontSize.large,
+    textAlign: "center",
+  },
 });
 
 // Separator
@@ -29,10 +35,22 @@ export default function RepositoryList() {
   const { repositories, loading, error } = useRepositories();
 
   // Loading screen
-  if (loading) return <View><Text>Loading repositories...</Text></View>;
+  if (loading) {
+    return (
+      <View>
+        <Text style={styles.header}>Loading repositories...</Text>
+      </View>
+    );
+  }
 
   // Error screen
-  if (error) return <View><Text>Failed to load repositories</Text></View>;
+  if (error) {
+    return (
+      <View>
+        <Text style={styles.header}>Failed to load repositories</Text>
+      </View>
+    );
+  }
 
   // Repositories list
   return (

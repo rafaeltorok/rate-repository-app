@@ -1,10 +1,6 @@
 // React Native
 import { View, StyleSheet, Text } from 'react-native';
 
-// Apollo client
-import { useQuery } from '@apollo/client';
-import { GET_SINGLE_REPOSITORY } from '../../graphql/queries';
-
 // Components
 import ItemHeader from './ItemHeader';
 import ItemStatistics from './ItemStatistics';
@@ -17,22 +13,30 @@ const styles = StyleSheet.create({
     padding: theme.spacing.large,
     backgroundColor: theme.colors.white,
   },
+  header: {
+    fontFamily: theme.fonts.main,
+    fontWeight: "bold",
+    fontSize: theme.fontSize.large,
+    textAlign: "center",
+  },
 });
 
 // Component
 export default function RepositoryItem({ repository }) {
-  const { data, loading , error } = useQuery(GET_SINGLE_REPOSITORY, {
-    variables: { repositoryId: repository.id },
-  });
+  // Guards against null repository values
+  if (!repository) {
+    return (
+      <View>
+        <Text style={styles.header}>Failed to load repository information</Text>
+      </View>
+    );
+  }
 
-  if (loading) return <View><Text>Loading repository information...</Text></View>;
-
-  if (error) return <View><Text>Failed to load repository information</Text></View>;
-
+  // Display the full repository info on the screen
   return (
     <View style={styles.repositoryItem}>
-      <ItemHeader repository={data.repository} />
-      <ItemStatistics repository={data.repository} />
+      <ItemHeader repository={repository} />
+      <ItemStatistics repository={repository} />
     </View>
   );
 };
