@@ -34,7 +34,7 @@ const theme = {
   borderRadius: {
     small: 5,
     medium: 10,
-  }
+  },
 };
 
 export default theme;

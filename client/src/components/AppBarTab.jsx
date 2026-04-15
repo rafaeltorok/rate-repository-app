@@ -1,9 +1,9 @@
 // React Native
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet } from "react-native";
 import { Link } from "react-router-native";
 
 // Styles
-import theme from '../theme';
+import theme from "../theme";
 
 const styles = StyleSheet.create({
   tab: {

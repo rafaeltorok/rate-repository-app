@@ -1,8 +1,8 @@
 // React Native
-import { Text, View, Image, StyleSheet } from 'react-native';
+import { Text, View, Image, StyleSheet } from "react-native";
 
 // Styles
-import theme from '../../theme';
+import theme from "../../theme";
 
 const styles = StyleSheet.create({
   mainRow: {
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   profilePic: {
     width: 50,
     height: 50,
-    borderRadius: theme.borderRadius.medium
+    borderRadius: theme.borderRadius.medium,
   },
   infoSection: {
     display: "flex",
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary,
     color: theme.colors.white,
     padding: theme.spacing.small,
-    alignSelf: "flex-start"  // width wraps content
+    alignSelf: "flex-start", // width wraps content
   },
 });
 

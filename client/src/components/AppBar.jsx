@@ -1,16 +1,16 @@
 // React Native
-import { View, StyleSheet, ScrollView } from 'react-native';
-import Constants from 'expo-constants';
+import { View, StyleSheet, ScrollView } from "react-native";
+import Constants from "expo-constants";
 
 // GraphQL queries
-import { useQuery } from '@apollo/client';
-import { LOGGED_USER } from '../graphql/queries';
+import { useQuery } from "@apollo/client";
+import { LOGGED_USER } from "../graphql/queries";
 
 // Components
-import AppBarTab from './AppBarTab';
+import AppBarTab from "./AppBarTab";
 
 // Styles
-import theme from '../theme';
+import theme from "../theme";
 
 const styles = StyleSheet.create({
   container: {
@@ -43,4 +43,4 @@ export default function AppBar() {
       </ScrollView>
     </View>
   );
-};
+}

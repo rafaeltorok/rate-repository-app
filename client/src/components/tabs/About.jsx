@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     fontFamily: theme.fonts.main,
     textAlign: "center",
     fontWeight: theme.fontWeights.bold,
-    fontSize: theme.fontSize.large
+    fontSize: theme.fontSize.large,
   },
   author: {
     fontFamily: theme.fonts.main,
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   },
   content: {
     fontFamily: theme.fonts.main,
-  }
+  },
 });
 
 // Component
@@ -31,8 +31,10 @@ export default function About() {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>About the app</Text>
-      <Text style={styles.content}>From the FullStackOpen course, Part 10. Section about React Native.</Text>
+      <Text style={styles.content}>
+        From the FullStackOpen course, Part 10. Section about React Native.
+      </Text>
       <Text style={styles.author}>Developed by Rafael G. Torok</Text>
     </View>
   );
-};
+}

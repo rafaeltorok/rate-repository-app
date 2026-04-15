@@ -1,5 +1,5 @@
 // Dotenv
-import 'dotenv/config';
+import "dotenv/config";
 
 export default {
   expo: {
@@ -12,26 +12,24 @@ export default {
     splash: {
       image: "./assets/splash.png",
       resizeMode: "contain",
-      backgroundColor: "#ffffff"
+      backgroundColor: "#ffffff",
     },
-    assetBundlePatterns: [
-      "**/*"
-    ],
+    assetBundlePatterns: ["**/*"],
     ios: {
-      supportsTablet: true
+      supportsTablet: true,
     },
     android: {
       adaptiveIcon: {
         foregroundImage: "./assets/adaptive-icon.png",
-        backgroundColor: "#ffffff"
-      }
+        backgroundColor: "#ffffff",
+      },
     },
     web: {
-      favicon: "./assets/favicon.png"
+      favicon: "./assets/favicon.png",
     },
     extra: {
-      env: process.env.ENV,  // For command line arguments. e.g. ENV=development
-      APOLLO_SERVER_URL: process.env.APOLLO_SERVER_URL,  // The Backend Server URL for GraphQL queries
-    }
-  }
-}
+      env: process.env.ENV, // For command line arguments. e.g. ENV=development
+      APOLLO_SERVER_URL: process.env.APOLLO_SERVER_URL, // The Backend Server URL for GraphQL queries
+    },
+  },
+};

@@ -2,7 +2,7 @@
 import { View, Text, Button, StyleSheet } from "react-native";
 
 // GraphQL queries
-import { useQuery } from '@apollo/client';
+import { useQuery } from "@apollo/client";
 import { LOGGED_USER } from "../../graphql/queries";
 
 // React Router
@@ -49,11 +49,9 @@ export default function SignOut() {
 
   // Loading screen
   if (loading) {
-    return (
-      <Text style={styles.header}>Loading user information...</Text>
-    );
+    return <Text style={styles.header}>Loading user information...</Text>;
   }
-  
+
   // Error screen
   if (error) {
     return (
@@ -64,11 +62,8 @@ export default function SignOut() {
   // Logged in user view
   return (
     <View style={styles.container}>
-        <Text style={styles.header}>Welcome, {data?.me.username}!</Text>
-        <Button
-          title="Logout"
-          onPress={handleSignOut}
-        />
+      <Text style={styles.header}>Welcome, {data?.me.username}!</Text>
+      <Button title="Logout" onPress={handleSignOut} />
     </View>
   );
 }

@@ -1,23 +1,23 @@
 // React Native
-import { StyleSheet, View, Text } from 'react-native';
-import { Route, Routes, Navigate } from 'react-router-native';
+import { StyleSheet, View, Text } from "react-native";
+import { Route, Routes, Navigate } from "react-router-native";
 
 // GraphQL queries
-import { useQuery } from '@apollo/client';
-import { LOGGED_USER } from '../graphql/queries';
+import { useQuery } from "@apollo/client";
+import { LOGGED_USER } from "../graphql/queries";
 
 // Components
-import AppBar from './AppBar';
-import RepositoryList from './RepositoryList';
-import SignIn from './tabs/SignIn';
-import SignOut from './tabs/SignOut';
-import Favorites from './tabs/Favorites';
-import Settings from './tabs/Settings';
-import About from './tabs/About';
-import Faq from './tabs/Faq';
+import AppBar from "./AppBar";
+import RepositoryList from "./RepositoryList";
+import SignIn from "./tabs/SignIn";
+import SignOut from "./tabs/SignOut";
+import Favorites from "./tabs/Favorites";
+import Settings from "./tabs/Settings";
+import About from "./tabs/About";
+import Faq from "./tabs/Faq";
 
 // Styles
-import theme from '../theme';
+import theme from "../theme";
 
 const styles = StyleSheet.create({
   container: {
@@ -52,24 +52,18 @@ export default function Main() {
         <Route
           path="/"
           element={
-            data?.me
-              ? <RepositoryList />
-              : <Navigate to="/signin" replace />
+            data?.me ? <RepositoryList /> : <Navigate to="/signin" replace />
           }
         />
         <Route path="/signin" element={<SignIn />} />
         <Route
           path="/signout"
-          element={
-            data?.me
-              ? <SignOut />
-              : <Navigate to="/signin" replace />
-          }
+          element={data?.me ? <SignOut /> : <Navigate to="/signin" replace />}
         />
-        <Route path='/favorites' element={<Favorites />} />
+        <Route path="/favorites" element={<Favorites />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/about" element={<About />} />
-        <Route path='/faq' element={<Faq />} />
+        <Route path="/faq" element={<Faq />} />
         {data?.me ? (
           <Route path="*" element={<Navigate to="/" replace />} />
         ) : (
@@ -78,4 +72,4 @@ export default function Main() {
       </Routes>
     </View>
   );
-};
+}

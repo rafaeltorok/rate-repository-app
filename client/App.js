@@ -1,18 +1,18 @@
 // React Native
-import { NativeRouter } from 'react-router-native';
+import { NativeRouter } from "react-router-native";
 
 // Components
-import Main from './src/components/Main';
+import Main from "./src/components/Main";
 
 // Utils
-import createApolloClient from './src/utils/apolloClient';
-import AuthStorage from './src/utils/authStorage';
+import createApolloClient from "./src/utils/apolloClient";
+import AuthStorage from "./src/utils/authStorage";
 
 // Context
-import AuthStorageContext from './src/contexts/AuthStorageContext';
+import AuthStorageContext from "./src/contexts/AuthStorageContext";
 
 // Apollo client
-import { ApolloProvider } from '@apollo/client/react';
+import { ApolloProvider } from "@apollo/client/react";
 const authStorage = new AuthStorage();
 const apolloClient = createApolloClient(authStorage);
 

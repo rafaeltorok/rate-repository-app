@@ -1,12 +1,12 @@
 // React Native
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text } from "react-native";
 
 // Components
-import ItemHeader from './ItemHeader';
-import ItemStatistics from './ItemStatistics';
+import ItemHeader from "./ItemHeader";
+import ItemStatistics from "./ItemStatistics";
 
 // Styles
-import theme from '../../theme';
+import theme from "../../theme";
 
 const styles = StyleSheet.create({
   repositoryItem: {
@@ -39,4 +39,4 @@ export default function RepositoryItem({ repository }) {
       <ItemStatistics repository={repository} />
     </View>
   );
-};
+}

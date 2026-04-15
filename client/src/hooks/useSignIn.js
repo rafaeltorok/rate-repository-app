@@ -1,9 +1,9 @@
 // Apollo client dependencies
-import { useApolloClient, useMutation } from '@apollo/client';
-import { AUTHENTICATE_USER } from '../graphql/queries';
+import { useApolloClient, useMutation } from "@apollo/client";
+import { AUTHENTICATE_USER } from "../graphql/queries";
 
 // Hooks
-import useAuthStorage from './useAuthStorage';
+import useAuthStorage from "./useAuthStorage";
 
 // Custom hook
 export default function useSignIn() {
@@ -17,7 +17,7 @@ export default function useSignIn() {
 
   const signIn = async ({ username, password }) => {
     // Sends the mutation query to log the user
-    const result = await mutate({ variables: { username, password} });
+    const result = await mutate({ variables: { username, password } });
 
     // Extracts the data from the mutation result
     const { data } = result;
@@ -29,7 +29,7 @@ export default function useSignIn() {
     await apolloClient.resetStore();
 
     return result;
-  }
+  };
 
   return [signIn, result];
-};
+}

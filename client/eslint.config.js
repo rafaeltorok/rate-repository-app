@@ -7,7 +7,7 @@ export default [
   // Base configs (replaces "extends")
   js.configs.recommended,
   reactPlugin.configs.flat.recommended, // for React 17+ JSX transform
-  
+
   // Main config object
   {
     files: ["**/*.{js,jsx}"],

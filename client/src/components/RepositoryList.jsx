@@ -1,14 +1,14 @@
 // React Native
-import { FlatList, View, StyleSheet, Text } from 'react-native';
+import { FlatList, View, StyleSheet, Text } from "react-native";
 
 // Hooks
-import useRepositories from '../hooks/useRepositories';
+import useRepositories from "../hooks/useRepositories";
 
 // Components
 import RepositoryItem from "./item/RepositoryItem";
 
 // Styles
-import theme from '../theme';
+import theme from "../theme";
 
 const styles = StyleSheet.create({
   container: {
@@ -57,14 +57,10 @@ export default function RepositoryList() {
     <View style={styles.container}>
       <FlatList
         data={repositories}
-        keyExtractor={(item, index) =>
-          item?.id ?? index.toString()
-        }
+        keyExtractor={(item, index) => item?.id ?? index.toString()}
         ItemSeparatorComponent={ItemSeparator}
-        renderItem={({ item }) =>
-          <RepositoryItem repository={item} />
-        }
+        renderItem={({ item }) => <RepositoryItem repository={item} />}
       />
     </View>
   );
-};
+}

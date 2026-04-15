@@ -13,11 +13,11 @@ const styles = StyleSheet.create({
     fontFamily: theme.fonts.main,
     textAlign: "center",
     fontWeight: theme.fontWeights.bold,
-    fontSize: theme.fontSize.large
+    fontSize: theme.fontSize.large,
   },
   content: {
     fontFamily: theme.fonts.main,
-  }
+  },
 });
 
 // Component
@@ -25,7 +25,9 @@ export default function Settings() {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>FAQ</Text>
-      <Text style={styles.content}>Frequently asked questions will be displayed in here.</Text>
+      <Text style={styles.content}>
+        Frequently asked questions will be displayed in here.
+      </Text>
     </View>
   );
-};
+}

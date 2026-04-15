@@ -1,21 +1,15 @@
 // React Native
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
-  TextInput, 
-  Button 
-} from "react-native";
+import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 import { useNavigate } from "react-router-native";
 
 // Hooks
 import useSignIn from "../../hooks/useSignIn";
 
 // Formik
-import { useFormik } from 'formik';
+import { useFormik } from "formik";
 
 // Yup
-import * as yup from 'yup';
+import * as yup from "yup";
 
 // CSS Styles
 import theme from "../../theme";
@@ -38,12 +32,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: theme.colors.input,
     borderRadius: theme.borderRadius.small,
-    padding: theme.spacing.medium
+    padding: theme.spacing.medium,
   },
   errorField: {
     fontFamily: theme.fonts.main,
     borderColor: theme.colors.error,
-  }
+  },
 });
 
 // Component
@@ -79,30 +73,26 @@ export default function SignIn() {
     } catch (err) {
       console.log(err);
     }
-  };
+  }
 
   // Create an instance of Formik
   const formik = useFormik({
-    initialValues: ({
+    initialValues: {
       username: "",
-      password: ""
-    }),
+      password: "",
+    },
     validationSchema,
-    onSubmit
+    onSubmit,
   });
 
   // Loading screen
   if (result.loading) {
-    return (
-      <Text style={styles.header}>Authenticating user...</Text>
-    );
+    return <Text style={styles.header}>Authenticating user...</Text>;
   }
 
   // Error screen
   if (result.error) {
-    return (
-      <Text style={styles.header}>Failed to authenticate user</Text>
-    );
+    return <Text style={styles.header}>Failed to authenticate user</Text>;
   }
 
   // Login form when there are no currently logged in users
@@ -111,13 +101,15 @@ export default function SignIn() {
       <Text style={styles.header}>Sign-in</Text>
       <TextInput
         style={[
-          styles.inputField, 
-          formik.touched.username && formik.errors.username && styles.errorField
+          styles.inputField,
+          formik.touched.username &&
+            formik.errors.username &&
+            styles.errorField,
         ]}
         placeholder="username"
         value={formik.values.username}
-        onChangeText={formik.handleChange('username')}
-        onBlur={formik.handleBlur('username')}
+        onChangeText={formik.handleChange("username")}
+        onBlur={formik.handleBlur("username")}
       />
       {formik.touched.username && formik.errors.username && (
         <Text style={{ color: "#d73a4a" }}>{formik.errors.username}</Text>
@@ -125,21 +117,20 @@ export default function SignIn() {
       <TextInput
         style={[
           styles.inputField,
-          formik.touched.password && formik.errors.password && styles.errorField
+          formik.touched.password &&
+            formik.errors.password &&
+            styles.errorField,
         ]}
         placeholder="password"
         secureTextEntry={true}
         value={formik.values.password}
-        onChangeText={formik.handleChange('password')}
-        onBlur={formik.handleBlur('password')}
+        onChangeText={formik.handleChange("password")}
+        onBlur={formik.handleBlur("password")}
       />
       {formik.touched.password && formik.errors.password && (
         <Text style={{ color: "#d73a4a" }}>{formik.errors.password}</Text>
       )}
-      <Button
-        title="Submit"
-        onPress={formik.handleSubmit}
-      />
+      <Button title="Submit" onPress={formik.handleSubmit} />
     </View>
   );
-};
+}
