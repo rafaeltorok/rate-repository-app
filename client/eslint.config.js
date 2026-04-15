@@ -1,14 +1,26 @@
+// JavaScript
 import js from "@eslint/js";
+
+// Plugins
 import reactPlugin from "eslint-plugin-react";
 import reactNativePlugin from "eslint-plugin-react-native";
+import pluginJest from "eslint-plugin-jest";
+
+// Babel
 import babelParser from "@babel/eslint-parser";
 
+// Configuration
 export default [
-  // Base configs (replaces "extends")
   js.configs.recommended,
-  reactPlugin.configs.flat.recommended, // for React 17+ JSX transform
+  reactPlugin.configs.flat.recommended,
 
-  // Main config object
+  // Jest config – applies only to test files
+  {
+    files: ["**/*.spec.js", "**/*.test.js"],
+    ...pluginJest.configs["flat/recommended"],
+  },
+
+  // React/React Native config – applies to all JS/JSX files
   {
     files: ["**/*.{js,jsx}"],
     languageOptions: {
@@ -18,19 +30,18 @@ export default [
         ecmaVersion: "latest",
         sourceType: "module",
       },
-      // Replaces "env: { react-native/react-native: true }"
       globals: {
         ...reactNativePlugin.environments["react-native"].globals,
+        ...pluginJest.environments.globals.globals,
       },
     },
     plugins: {
       react: reactPlugin,
       "react-native": reactNativePlugin,
+      jest: pluginJest,  // still needed for Jest globals/rules in these files
     },
     settings: {
-      react: {
-        version: "detect",
-      },
+      react: { version: "detect" },
     },
     rules: {
       "react/prop-types": "off",
