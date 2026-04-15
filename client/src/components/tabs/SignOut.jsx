@@ -55,7 +55,7 @@ export default function SignOut() {
   // Error screen
   if (error) {
     return (
-      <Text style={styles.header}>Failed to load the logged in user info</Text>
+      <Text style={styles.header}>Failed to load the user information</Text>
     );
   }
 

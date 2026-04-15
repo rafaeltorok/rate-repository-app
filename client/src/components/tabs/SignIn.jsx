@@ -90,11 +90,6 @@ export default function SignIn() {
     return <Text style={styles.header}>Authenticating user...</Text>;
   }
 
-  // Error screen
-  if (result.error) {
-    return <Text style={styles.header}>Failed to authenticate user</Text>;
-  }
-
   // Login form when there are no currently logged in users
   return (
     <View style={styles.container}>
@@ -112,7 +107,9 @@ export default function SignIn() {
         onBlur={formik.handleBlur("username")}
       />
       {formik.touched.username && formik.errors.username && (
-        <Text style={{ color: "#d73a4a" }}>{formik.errors.username}</Text>
+        <Text style={{ color: theme.colors.error }}>
+          {formik.errors.username}
+        </Text>
       )}
       <TextInput
         style={[
@@ -128,9 +125,21 @@ export default function SignIn() {
         onBlur={formik.handleBlur("password")}
       />
       {formik.touched.password && formik.errors.password && (
-        <Text style={{ color: "#d73a4a" }}>{formik.errors.password}</Text>
+        <Text style={{ color: theme.colors.error }}>
+          {formik.errors.password}
+        </Text>
       )}
       <Button title="Submit" onPress={formik.handleSubmit} />
+      {result.error && (
+        <Text
+          style={{
+            color: theme.colors.error,
+            fontWeight: theme.fontWeights.bold,
+          }}
+        >
+          Failed to authenticate user
+        </Text>
+      )}
     </View>
   );
 }
