@@ -2,7 +2,7 @@
 import { Text, View, Image, StyleSheet } from "react-native";
 
 // Styles
-import theme from "../../theme";
+import theme from "../../../theme";
 
 const styles = StyleSheet.create({
   mainRow: {

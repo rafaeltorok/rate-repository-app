@@ -6,7 +6,7 @@ import ItemHeader from "./ItemHeader";
 import ItemStatistics from "./ItemStatistics";
 
 // Styles
-import theme from "../../theme";
+import theme from "../../../theme";
 
 const styles = StyleSheet.create({
   repositoryItem: {
@@ -34,7 +34,7 @@ export default function RepositoryItem({ repository }) {
 
   // Display the full repository info on the screen
   return (
-    <View style={styles.repositoryItem}>
+    <View style={styles.repositoryItem} testID="repositoryItem">
       <ItemHeader repository={repository} />
       <ItemStatistics repository={repository} />
     </View>

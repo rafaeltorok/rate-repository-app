@@ -8,7 +8,7 @@ import { LOGGED_USER } from "../graphql/queries";
 
 // Components
 import AppBar from "./AppBar";
-import RepositoryList from "./RepositoryList";
+import RepositoryList from "./repositories/RepositoryList";
 import SignIn from "./tabs/SignIn";
 import SignOut from "./tabs/SignOut";
 import Favorites from "./tabs/Favorites";

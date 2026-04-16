@@ -1,14 +1,11 @@
 // React Native
 import { FlatList, View, StyleSheet, Text } from "react-native";
 
-// Hooks
-import useRepositories from "../hooks/useRepositories";
-
 // Components
 import RepositoryItem from "./item/RepositoryItem";
 
 // Styles
-import theme from "../theme";
+import theme from "../../theme";
 
 const styles = StyleSheet.create({
   container: {
@@ -19,39 +16,13 @@ const styles = StyleSheet.create({
   separator: {
     height: theme.spacing.medium,
   },
-  header: {
-    fontFamily: theme.fonts.main,
-    fontWeight: "bold",
-    fontSize: theme.fontSize.large,
-    textAlign: "center",
-  },
 });
 
 // Separator
 const ItemSeparator = () => <View style={styles.separator} />;
 
 // Component
-export default function RepositoryList() {
-  const { repositories, loading, error } = useRepositories();
-
-  // Loading screen
-  if (loading) {
-    return (
-      <View>
-        <Text style={styles.header}>Loading repositories...</Text>
-      </View>
-    );
-  }
-
-  // Error screen
-  if (error) {
-    return (
-      <View>
-        <Text style={styles.header}>Failed to load repositories</Text>
-      </View>
-    );
-  }
-
+export default function RepositoryListContainer({ repositories }) {
   // Repositories list
   return (
     <View style={styles.container}>
