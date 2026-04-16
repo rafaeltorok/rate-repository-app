@@ -5,8 +5,9 @@ An Android mobile app to rate Github repositories. Based on the project from the
 
 ## Table of Contents
 - [Env](#env)
-- [Frontend](#frontend)
+- [Client](#client)
 - [Server](#server)
+- [Tests](#tests)
 - [FAQ](#-faq)
 - [Notes](#notes)
 
@@ -29,7 +30,7 @@ The following environment variables are required:
 Store both `.env` files on their respective root folders, alongside the `package.json` file.
 
 
-## Frontend
+## Client
 ### Setup
 Install dependencies
 ```bash
@@ -126,6 +127,19 @@ A handy way to authorize requests in the Apollo Sandbox is to retrieve an access
   "Authorization": "Bearer <ACCESS_TOKEN>"
 }
 ```
+
+
+## Tests
+### Frontend component integration tests
+1. Install dependencies
+    ```bash
+    cd ./client && npm install
+    ```
+
+2. Run the tests
+    ```bash
+    npm run test
+    ```
 
 
 ## ❓ FAQ
