@@ -1,5 +1,5 @@
 // React Native
-import { FlatList, View, StyleSheet, Text } from "react-native";
+import { FlatList, View, StyleSheet } from "react-native";
 
 // Components
 import RepositoryItem from "./item/RepositoryItem";
