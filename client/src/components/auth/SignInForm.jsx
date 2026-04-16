@@ -1,9 +1,5 @@
 // React Native
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
-import { useNavigate } from "react-router-native";
-
-// Hooks
-import useSignIn from "../../hooks/useSignIn";
 
 // Formik
 import { useFormik } from "formik";
@@ -40,14 +36,7 @@ const styles = StyleSheet.create({
   },
 });
 
-// Component
-export default function SignIn() {
-  // Custom hook to handle user authentication
-  const [signIn, result] = useSignIn();
-
-  // React Router hook
-  const navigate = useNavigate();
-
+export default function SignInForm({ onSubmit, error }) {
   // Yup validation Schema
   const validationSchema = yup.object().shape({
     username: yup
@@ -60,21 +49,6 @@ export default function SignIn() {
       .required("Password is required"),
   });
 
-  // Submit button function
-  async function onSubmit(values) {
-    const { username, password } = values;
-
-    try {
-      // Sign in mutation
-      await signIn({ username, password });
-
-      // Redirect after successful authentication
-      navigate("/");
-    } catch (err) {
-      console.log(err);
-    }
-  }
-
   // Create an instance of Formik
   const formik = useFormik({
     initialValues: {
@@ -85,12 +59,6 @@ export default function SignIn() {
     onSubmit,
   });
 
-  // Loading screen
-  if (result.loading) {
-    return <Text style={styles.header}>Authenticating user...</Text>;
-  }
-
-  // Login form when there are no currently logged in users
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Sign-in</Text>
@@ -130,7 +98,7 @@ export default function SignIn() {
         </Text>
       )}
       <Button title="Submit" onPress={formik.handleSubmit} />
-      {result.error && (
+      {error && (
         <Text
           style={{
             color: theme.colors.error,

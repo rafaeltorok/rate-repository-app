@@ -9,8 +9,8 @@ import { LOGGED_USER } from "../graphql/queries";
 // Components
 import AppBar from "./AppBar";
 import RepositoryList from "./repositories/RepositoryList";
-import SignIn from "./tabs/SignIn";
-import SignOut from "./tabs/SignOut";
+import SignIn from "./auth/SignIn";
+import SignOut from "./auth/SignOut";
 import Favorites from "./tabs/Favorites";
 import Settings from "./tabs/Settings";
 import About from "./tabs/About";
