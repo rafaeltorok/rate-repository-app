@@ -2,7 +2,7 @@
 import { FlatList, View, StyleSheet } from "react-native";
 
 // Components
-import RepositoryItem from "./item/RepositoryItem";
+import RepositoryItem from "./RepositoryItem";
 
 // Styles
 import theme from "../../theme";

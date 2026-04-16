@@ -6,7 +6,7 @@ import ItemHeader from "./ItemHeader";
 import ItemStatistics from "./ItemStatistics";
 
 // Styles
-import theme from "../../../theme";
+import theme from "../../theme";
 
 const styles = StyleSheet.create({
   repositoryItem: {

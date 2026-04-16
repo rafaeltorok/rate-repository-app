@@ -2,10 +2,10 @@
 import { Text, View, StyleSheet } from "react-native";
 
 // Utils
-import formatNumber from "../../../utils/formatNumber";
+import formatNumber from "../../utils/formatNumber";
 
 // Styles
-import theme from "../../../theme";
+import theme from "../../theme";
 
 const styles = StyleSheet.create({
   row: {

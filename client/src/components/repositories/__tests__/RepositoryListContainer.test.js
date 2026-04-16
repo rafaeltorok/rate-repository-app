@@ -2,13 +2,13 @@
 import { render, screen } from '@testing-library/react-native';
 
 // Components
-import RepositoryListContainer from "../../../src/components/repositories/RepositoryListContainer";
+import RepositoryListContainer from "../RepositoryListContainer";
 
 // Data
-import repositories from "../../../__fixtures__/repositories";
+import repositories from "../../../../test-utils/fixtures/repositories";
 
 // Test utils
-import checkRepoInfo from '../../../test-utils/repositories/checkRepoInfo';
+import checkRepoInfo from '../../../../test-utils/repositories/checkRepoInfo';
 
 // Tests
 describe('RepositoryList', () => {

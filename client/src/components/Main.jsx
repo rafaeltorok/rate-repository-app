@@ -11,10 +11,10 @@ import AppBar from "./AppBar";
 import RepositoryList from "./repositories/RepositoryList";
 import SignIn from "./auth/SignIn";
 import SignOut from "./auth/SignOut";
-import Favorites from "./tabs/Favorites";
-import Settings from "./tabs/Settings";
-import About from "./tabs/About";
-import Faq from "./tabs/Faq";
+import Favorites from "./screens/Favorites";
+import Settings from "./screens/Settings";
+import About from "./screens/About";
+import Faq from "./screens/Faq";
 
 // Styles
 import theme from "../theme";
