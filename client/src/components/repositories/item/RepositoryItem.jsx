@@ -27,7 +27,7 @@ export default function RepositoryItem({ repository }) {
   if (!repository) {
     return (
       <View>
-        <Text style={styles.header}>Failed to load repository information</Text>
+        <Text>Failed to load repository information</Text>
       </View>
     );
   }
