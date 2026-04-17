@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
   repositoryItem: {
     padding: theme.spacing.large,
     backgroundColor: theme.colors.white,
+    marginBottom: theme.spacing.medium
   },
   header: {
     fontFamily: theme.fonts.main,

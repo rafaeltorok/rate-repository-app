@@ -1,5 +1,5 @@
 // React Native
-import { View, StyleSheet, Text } from "react-native";
+import { StyleSheet, Text } from "react-native";
 
 // Hooks
 import useRepositories from "../../hooks/useRepositories";
@@ -26,20 +26,12 @@ export default function RepositoryList() {
 
   // Loading screen
   if (loading) {
-    return (
-      <View>
-        <Text style={styles.header}>Loading repositories...</Text>
-      </View>
-    );
+    return <Text style={styles.header}>Loading repositories...</Text>;
   }
 
   // Error screen
   if (error) {
-    return (
-      <View>
-        <Text style={styles.header}>Failed to load repositories</Text>
-      </View>
-    );
+    return <Text style={styles.header}>Failed to load repositories</Text>;
   }
 
   // Renders the repositories container

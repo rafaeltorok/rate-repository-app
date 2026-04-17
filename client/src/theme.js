@@ -19,6 +19,8 @@ const theme = {
     }),
   },
   fontSize: {
+    small: 10,
+    medium: 16,
     large: 25,
   },
   fontWeights: {
@@ -34,6 +36,7 @@ const theme = {
   borderRadius: {
     small: 5,
     medium: 10,
+    reviewRating: 50,
   },
 };
 

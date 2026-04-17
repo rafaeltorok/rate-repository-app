@@ -1,9 +1,9 @@
 // React Native
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { useParams } from 'react-router-native';
 
 // Components
-import RepositoryItem from "./RepositoryItem";
+import ReviewListContainer from "./reviews/ReviewListContainer";
 
 // Hooks
 import useRepository from "../../hooks/useRepository";
@@ -12,6 +12,10 @@ import useRepository from "../../hooks/useRepository";
 import theme from "../../theme";
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginBottom: theme.spacing.small,
+  },
   header: {
     fontFamily: theme.fonts.main,
     fontWeight: "bold",
@@ -40,6 +44,11 @@ export default function SingleRepository() {
 
   // Display repository info
   return (
-    <RepositoryItem repository={data?.repository} showFullInfo={true} />
+    <View style={styles.container}>
+      <ReviewListContainer 
+        id={id}
+        repository={data?.repository}
+      />
+    </View>
   );
 }
