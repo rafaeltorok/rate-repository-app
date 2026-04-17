@@ -1,5 +1,8 @@
 // React Native
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Button } from "react-native";
+
+// Expo Linking
+import * as Linking from 'expo-linking';
 
 // Components
 import ItemHeader from "./ItemHeader";
@@ -22,7 +25,11 @@ const styles = StyleSheet.create({
 });
 
 // Component
-export default function RepositoryItem({ repository }) {
+export default function RepositoryItem({ repository, showFullInfo }) {
+  function handleUrl() {
+    if (repository.url) Linking.openURL(repository.url);
+  }
+
   // Guards against null repository values
   if (!repository) {
     return (
@@ -37,6 +44,7 @@ export default function RepositoryItem({ repository }) {
     <View style={styles.repositoryItem} testID="repositoryItem">
       <ItemHeader repository={repository} />
       <ItemStatistics repository={repository} />
+      {showFullInfo && <Button title="Open in Github" onPress={handleUrl} />}
     </View>
   );
 }

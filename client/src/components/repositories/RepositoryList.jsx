@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
 
 // Component
 export default function RepositoryList() {
+  // Fetch the list with all available repositories
   const { repositories, loading, error } = useRepositories();
 
   // Loading screen

@@ -27,6 +27,29 @@ export const GET_REPOSITORIES = gql`
   }
 `;
 
+export const GET_SINGLE_REPOSITORY = gql`
+  query ($id: ID!) {
+    repository (id: $id) {
+      id
+      ownerName
+      name
+      createdAt
+      fullName
+      ratingAverage
+      reviewCount
+      stargazersCount
+      watchersCount
+      forksCount
+      openIssuesCount
+      url
+      ownerAvatarUrl
+      description
+      language
+      userHasReviewed
+    }
+  }
+`;
+
 export const AUTHENTICATE_USER = gql`
   mutation AuthenticateUser($username: String!, $password: String!) {
     authenticate(credentials: { username: $username, password: $password }) {

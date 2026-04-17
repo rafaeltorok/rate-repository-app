@@ -9,6 +9,7 @@ import { LOGGED_USER } from "../graphql/queries";
 // Components
 import AppBar from "./AppBar";
 import RepositoryList from "./repositories/RepositoryList";
+import SingleRepository from "./repositories/SingleRepository";
 import SignIn from "./auth/SignIn";
 import SignOut from "./auth/SignOut";
 import Favorites from "./screens/Favorites";
@@ -53,6 +54,12 @@ export default function Main() {
           path="/"
           element={
             data?.me ? <RepositoryList /> : <Navigate to="/signin" replace />
+          }
+        />
+        <Route
+          path="/repository/:id"
+          element={
+            data?.me ? <SingleRepository /> : <Navigate to="/signin" replace />
           }
         />
         <Route path="/signin" element={<SignIn />} />
