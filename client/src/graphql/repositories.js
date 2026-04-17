@@ -49,20 +49,3 @@ export const GET_SINGLE_REPOSITORY = gql`
     }
   }
 `;
-
-export const AUTHENTICATE_USER = gql`
-  mutation AuthenticateUser($username: String!, $password: String!) {
-    authenticate(credentials: { username: $username, password: $password }) {
-      accessToken
-    }
-  }
-`;
-
-export const LOGGED_USER = gql`
-  query {
-    me {
-      id
-      username
-    }
-  }
-`;

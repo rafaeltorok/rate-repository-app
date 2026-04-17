@@ -3,7 +3,7 @@ import { View, Text, Button, StyleSheet } from "react-native";
 
 // GraphQL queries
 import { useQuery } from "@apollo/client";
-import { LOGGED_USER } from "../../graphql/queries";
+import { LOGGED_USER } from "../../graphql/authentication";
 
 // React Router
 import { useNavigate } from "react-router-native";

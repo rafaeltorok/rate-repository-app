@@ -4,7 +4,7 @@ import { Route, Routes, Navigate } from "react-router-native";
 
 // GraphQL queries
 import { useQuery } from "@apollo/client";
-import { LOGGED_USER } from "../graphql/queries";
+import { LOGGED_USER } from "../graphql/authentication";
 
 // Components
 import AppBar from "./AppBar";

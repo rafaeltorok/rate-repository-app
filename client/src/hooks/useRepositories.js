@@ -1,6 +1,6 @@
 // Apollo client
 import { useQuery } from "@apollo/client";
-import { GET_REPOSITORIES } from "../graphql/queries";
+import { GET_REPOSITORIES } from "../graphql/repositories";
 
 export default function useRepositories() {
   const { data, loading, error } = useQuery(GET_REPOSITORIES, {

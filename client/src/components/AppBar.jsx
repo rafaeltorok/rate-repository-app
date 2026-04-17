@@ -4,7 +4,7 @@ import Constants from "expo-constants";
 
 // GraphQL queries
 import { useQuery } from "@apollo/client";
-import { LOGGED_USER } from "../graphql/queries";
+import { LOGGED_USER } from "../graphql/authentication";
 
 // Components
 import AppBarTab from "./AppBarTab";
