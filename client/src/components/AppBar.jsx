@@ -30,16 +30,21 @@ export default function AppBar() {
   return (
     <View style={styles.container}>
       <ScrollView horizontal>
+        {/* Main page, the repositories list */}
         {data?.me && <AppBarTab tabName={"Repositories"} link={"/"} />}
+
+        {/* The sign-in and sign-out pages, depending if there is a logged in user or not */}
         {data?.me ? (
           <AppBarTab tabName={"Sign-out"} link={"/signout"} />
         ) : (
           <AppBarTab tabName={"Sign-in"} link={"/signin"} />
         )}
-        <AppBarTab tabName={"Favorites"} link={"/favorites"} />
-        <AppBarTab tabName={"Settings"} link={"/settings"} />
+
+        {/* Create a new review form */}
+        {data?.me && <AppBarTab tabName={"Create a review"} link={"/review"} />}
+
+        {/* About page */}
         <AppBarTab tabName={"About"} link={"/about"} />
-        <AppBarTab tabName={"FAQ"} link={"/faq"} />
       </ScrollView>
     </View>
   );

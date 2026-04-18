@@ -12,10 +12,8 @@ import RepositoryList from "./repositories/RepositoryList";
 import SingleRepository from "./repositories/SingleRepository";
 import SignIn from "./auth/SignIn";
 import SignOut from "./auth/SignOut";
-import Favorites from "./screens/Favorites";
-import Settings from "./screens/Settings";
+import CreateReview from "./screens/CreateReview";
 import About from "./screens/About";
-import Faq from "./screens/Faq";
 
 // Styles
 import theme from "../theme";
@@ -50,27 +48,43 @@ export default function Main() {
     <View style={styles.container}>
       <AppBar />
       <Routes>
+        {/* Main page, the repositories list */}
         <Route
           path="/"
           element={
             data?.me ? <RepositoryList /> : <Navigate to="/signin" replace />
           }
         />
+
+        {/* The single repository page, containing the full information */}
         <Route
           path="/repository/:id"
           element={
             data?.me ? <SingleRepository /> : <Navigate to="/signin" replace />
           }
         />
+
+        {/* Sign-in form */}
         <Route path="/signin" element={<SignIn />} />
+
+        {/* Sign-out page */}
         <Route
           path="/signout"
           element={data?.me ? <SignOut /> : <Navigate to="/signin" replace />}
         />
-        <Route path="/favorites" element={<Favorites />} />
-        <Route path="/settings" element={<Settings />} />
+
+        {/* Create a new review form */}
+        <Route
+          path="/review"
+          element={
+            data?.me ? <CreateReview /> : <Navigate to="/signin" replace />
+          }
+        />
+
+        {/* About page */}
         <Route path="/about" element={<About />} />
-        <Route path="/faq" element={<Faq />} />
+
+        {/* catch-all route */}
         {data?.me ? (
           <Route path="*" element={<Navigate to="/" replace />} />
         ) : (
