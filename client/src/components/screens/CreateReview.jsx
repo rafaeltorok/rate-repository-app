@@ -34,15 +34,18 @@ export default function CreateReview() {
 
   // Submit button function
   async function onSubmit(values) {
+    // Extract the review data
     const { ownerName, repositoryName, rating, text } = values;
-    const numberRating = Number(rating);
 
     try {
-      // Create review mutation
-      await createReview({ ownerName, repositoryName, numberRating, text });
+      // Convert the string rating into a number
+      const numberRating = Number(rating);
+
+      // Create review mutation with a valid rating number
+      const review = await createReview({ ownerName, repositoryName, rating: numberRating, text });
 
       // Redirect after successfully creating a new review
-      navigate("/");
+      navigate(`/repository/${review.repositoryId}`);
     } catch (err) {
       console.log(err);
     }

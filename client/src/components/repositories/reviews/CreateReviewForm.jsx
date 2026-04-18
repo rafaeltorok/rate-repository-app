@@ -90,7 +90,7 @@ export default function CreateReviewForm({ repositoriesList, onSubmit, error }) 
             />
           ))}
       </Picker>
-      {formik.errors.ownerName && (
+      {formik.touched.ownerName && formik.errors.ownerName && (
         <Text style={{ color: theme.colors.error }}>
           {formik.errors.ownerName}
         </Text>
@@ -114,7 +114,7 @@ export default function CreateReviewForm({ repositoriesList, onSubmit, error }) 
             />
           ))}
       </Picker>
-      {formik.errors.repositoryName && (
+      {formik.touched.repositoryName && formik.errors.repositoryName && (
         <Text style={{ color: theme.colors.error }}>
           {formik.errors.repositoryName}
         </Text>
@@ -157,7 +157,7 @@ export default function CreateReviewForm({ repositoriesList, onSubmit, error }) 
             fontWeight: theme.fontWeights.bold,
           }}
         >
-          Failed to add review
+          {error.graphQLErrors[0].message}
         </Text>
       )}
 
