@@ -33,11 +33,11 @@ export default function AppBar() {
         {/* Main page, the repositories list */}
         {data?.me && <AppBarTab tabName={"Repositories"} link={"/"} />}
 
-        {/* The sign-in and sign-out pages, depending if there is a logged in user or not */}
+        {/* The Sign In and Sign Out pages, depending if there is an user logged in */}
         {data?.me ? (
-          <AppBarTab tabName={"Sign-out"} link={"/signout"} />
+          <AppBarTab tabName={"Sign Out"} link={"/signout"} />
         ) : (
-          <AppBarTab tabName={"Sign-in"} link={"/signin"} />
+          <AppBarTab tabName={"Sign In"} link={"/signin"} />
         )}
 
         {/* Create a new review form */}

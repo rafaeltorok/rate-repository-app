@@ -12,6 +12,7 @@ import RepositoryList from "./repositories/RepositoryList";
 import SingleRepository from "./repositories/SingleRepository";
 import SignIn from "./auth/SignIn";
 import SignOut from "./auth/SignOut";
+import SignUp from "./auth/SignUp";
 import CreateReview from "./screens/CreateReview";
 import About from "./screens/About";
 
@@ -64,14 +65,17 @@ export default function Main() {
           }
         />
 
-        {/* Sign-in form */}
+        {/* Sign In form */}
         <Route path="/signin" element={<SignIn />} />
 
-        {/* Sign-out page */}
+        {/* Sign Out page */}
         <Route
           path="/signout"
           element={data?.me ? <SignOut /> : <Navigate to="/signin" replace />}
         />
+
+        {/* Sign Up form */}
+        <Route path="/signup" element={<SignUp />} />
 
         {/* Create a new review form */}
         <Route
