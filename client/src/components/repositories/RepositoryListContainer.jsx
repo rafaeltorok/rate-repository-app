@@ -67,7 +67,7 @@ export default function RepositoryListContainer({ repositories, value, setValue 
                 value={"Latest"}
               />
               <Picker.Item
-                label="Highest rate repositories"
+                label="Highest rated repositories"
                 value={"Highest"}
               />
               <Picker.Item
