@@ -1,6 +1,10 @@
 // React Native
 import { FlatList, View, StyleSheet, Pressable } from "react-native";
 import { useNavigate } from "react-router-native";
+import { Picker } from "@react-native-picker/picker";
+
+// Utils
+import getLatestReview from "../../utils/getLatestReview";
 
 // Components
 import RepositoryItem from "./RepositoryItem";
@@ -29,7 +33,9 @@ const styles = StyleSheet.create({
 const ItemSeparator = () => <View style={styles.separator} />;
 
 // Component
-export default function RepositoryListContainer({ repositories }) {
+export default function RepositoryListContainer({ repositories, value, setValue }) {
+  let orderedRepositories = repositories;
+
   // React Router hook
   const navigate = useNavigate();
 
@@ -38,13 +44,38 @@ export default function RepositoryListContainer({ repositories }) {
     navigate(`/repository/${id}`);
   }
 
+  // Order the repositories based on the newest reviewed to oldest
+  if (value === "Latest") {
+    orderedRepositories = repositories.slice().sort((a, b) => {
+      return getLatestReview(b) - getLatestReview(a);
+    });
+  }
+
   // Repositories list
   return (
     <View style={styles.container}>
       <FlatList
-        data={repositories}
+        data={orderedRepositories}
         keyExtractor={(item, index) => item?.id ?? index.toString()}
         ItemSeparatorComponent={ItemSeparator}
+        ListHeaderComponent={() => 
+          <Picker
+            selectedValue={value}
+            onValueChange={setValue}>
+              <Picker.Item
+                label="Latest repositories"
+                value={"Latest"}
+              />
+              <Picker.Item
+                label="Highest rate repositories"
+                value={"Highest"}
+              />
+              <Picker.Item
+                label="Lowest rated repositories"
+                value={"Lowest"}
+              />
+          </Picker>        
+        }
         renderItem={({ item }) => (
           <Pressable 
             onPress={() => handlePress(item.id)}

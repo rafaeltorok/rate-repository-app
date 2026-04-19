@@ -31,6 +31,17 @@ export default function createApolloClient(authStorage) {
 
   return new ApolloClient({
     link: authLink.concat(httpLink),
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+      // Disable Apollo cache merging for reviews (ReviewConnection has no id, causes merge conflicts)
+      typePolicies: {
+        Repository: {
+          fields: {
+            reviews: {
+              merge: false
+            }
+          }
+        }
+      }
+    }),
   });
 }

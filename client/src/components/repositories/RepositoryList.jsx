@@ -1,6 +1,9 @@
 // React Native
 import { StyleSheet, Text } from "react-native";
 
+// React
+import { useState } from "react";
+
 // Hooks
 import useRepositories from "../../hooks/useRepositories";
 
@@ -21,8 +24,29 @@ const styles = StyleSheet.create({
 
 // Component
 export default function RepositoryList() {
+  // Handle the ordering for the repositories list on the main page
+  const [value, setValue] = useState("Latest");
+  let orderBy;
+  let orderDirection;
+
+  // Match the option to the respective query variable
+  switch (value) {
+    case "Latest":
+      orderBy = "CREATED_AT";
+      orderDirection = "DESC";
+      break;
+    case "Highest":
+      orderBy = "RATING_AVERAGE";
+      orderDirection = "DESC";
+      break;
+    case "Lowest":
+      orderBy = "RATING_AVERAGE";
+      orderDirection = "ASC";
+      break;
+  }
+
   // Fetch the list with all available repositories
-  const { repositories, loading, error } = useRepositories();
+  const { repositories, loading, error } = useRepositories(orderBy, orderDirection);
 
   // Loading screen
   if (loading) {
@@ -36,6 +60,6 @@ export default function RepositoryList() {
 
   // Renders the repositories container
   return (
-    <RepositoryListContainer repositories={repositories} />
+    <RepositoryListContainer repositories={repositories} value={value} setValue={setValue} />
   );
 }

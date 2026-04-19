@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
 export default function ReviewItem({ review }) {
   // Error message
   if (!review) {
-    return <Text>Failed to get review</Text>
+    return <Text>Failed to load review</Text>
   }
 
   // Display the review

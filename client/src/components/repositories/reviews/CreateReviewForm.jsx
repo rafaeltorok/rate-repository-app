@@ -1,6 +1,6 @@
 // React Native
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
 
 // Formik
 import { useFormik } from "formik";
