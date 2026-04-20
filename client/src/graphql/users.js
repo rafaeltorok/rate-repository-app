@@ -8,3 +8,30 @@ export const CREATE_USER = gql`
     }
   }
 `;
+
+export const GET_CURRENT_USER = gql`
+  query getCurrentUser($includeReviews: Boolean = false) {
+    me {
+      id
+      username
+      createdAt
+      reviewCount
+      reviews @include(if: $includeReviews) {
+        edges {
+          node {
+            id
+            userId
+            repositoryId
+            rating
+            createdAt
+            text
+            repository {
+              ownerName
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+`;

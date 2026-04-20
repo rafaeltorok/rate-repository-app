@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
 });
 
 // Component
-export default function ReviewItem({ review }) {
+export default function ReviewItem({ review, myReview = false }) {
   // Error message
   if (!review) {
     return <Text>Failed to load review</Text>
@@ -57,7 +57,11 @@ export default function ReviewItem({ review }) {
         <Text style={styles.ratingText}>{review.rating}</Text>
       </View>
       <View style={styles.reviewInfo}>
-        <Text style={styles.username}>{review.user.username}</Text>
+        {myReview ? (
+          <Text style={styles.username}>{review.repository.ownerName}/{review.repository.name}</Text>
+        ) : (
+          <Text style={styles.username}>{review.user.username}</Text>
+        )}
         <Text style={styles.date}>{formatDate(review.createdAt)}</Text>
         <Text style={styles.text}>{review.text}</Text>
       </View>

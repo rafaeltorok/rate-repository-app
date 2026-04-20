@@ -43,6 +43,9 @@ export default function AppBar() {
         {/* Create a new review form */}
         {data?.me && <AppBarTab tabName={"Create a review"} link={"/review"} />}
 
+        {/* The currently logged in user's reviews */}
+        {data?.me && <AppBarTab tabName={"My reviews"} link={"/myreviews"} />}
+
         {/* About page */}
         <AppBarTab tabName={"About"} link={"/about"} />
       </ScrollView>

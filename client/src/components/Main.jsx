@@ -14,6 +14,7 @@ import SignIn from "./auth/SignIn";
 import SignOut from "./auth/SignOut";
 import SignUp from "./auth/SignUp";
 import CreateReview from "./screens/CreateReview";
+import MyReviews from "./screens/MyReviews";
 import About from "./screens/About";
 
 // Styles
@@ -82,6 +83,14 @@ export default function Main() {
           path="/review"
           element={
             data?.me ? <CreateReview /> : <Navigate to="/signin" replace />
+          }
+        />
+
+        {/* Display all the logged in user's reviews */}
+        <Route
+          path="/myreviews"
+          element={
+            data?.me ? <MyReviews /> : <Navigate to="/signin" replace />
           }
         />
 
