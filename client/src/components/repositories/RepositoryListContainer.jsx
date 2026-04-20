@@ -57,6 +57,20 @@ export default class RepositoryListContainer extends React.Component {
     )
   }
 
+  // Conditionally renders the UI messages
+  renderEmptyState = () => {
+    if (this.props.loading) {
+      // Loading message
+      return <Text style={styles.header}>Loading repositories...</Text>;
+    } else if (this.props.error) {
+      // Error message
+      return <Text style={styles.header}>Failed to load repositories</Text>;
+    } else if (this.props.repositories.length === 0) {
+      // Empty repositories list message
+      return <Text style={styles.header}>No repositories found</Text>;
+    }
+  }
+
   // Render the repositories list
   render() {
     // Mutable array to hold the three order options
@@ -82,11 +96,10 @@ export default class RepositoryListContainer extends React.Component {
               onPress={() => this.props.handlePress(item.id)}
               style={({pressed}) => pressed ? styles.pressed : styles.normal}
             >
-              {this.props.loading && <Text style={styles.header}>Loading repositories...</Text>}
-              {this.props.error && <Text style={styles.header}>Failed to load repositories</Text>}
               <RepositoryItem repository={item} />
             </Pressable>
           )}
+          ListEmptyComponent={this.renderEmptyState}
         />
       </View>
     );
