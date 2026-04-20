@@ -4,9 +4,6 @@ import { FlatList, View, StyleSheet, Pressable, Text } from "react-native";
 // React
 import React from "react";
 
-// Utils
-import getLatestReview from "../../utils/getLatestReview";
-
 // Components
 import RepositoryItem from "./RepositoryItem";
 import RepositoryListHeader from "./RepositoryListHeader";
@@ -73,21 +70,11 @@ export default class RepositoryListContainer extends React.Component {
 
   // Render the repositories list
   render() {
-    // Mutable array to hold the three order options
-    let orderedRepositories = this.props.repositories;
-
-    // Order the repositories based on the newest reviewed to oldest
-    if (this.props.value === "Latest") {
-      orderedRepositories = this.props.repositories.slice().sort((a, b) => {
-        return getLatestReview(b) - getLatestReview(a);
-      });
-    }
-
     // Render the flatlist containing all of the repositories
     return (
       <View style={styles.container}>
         <FlatList
-          data={orderedRepositories}
+          data={this.props.repositories}
           keyExtractor={(item, index) => item?.id ?? index.toString()}
           ItemSeparatorComponent={ItemSeparator}
           ListHeaderComponent={this.renderHeader}
