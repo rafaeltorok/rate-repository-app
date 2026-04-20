@@ -21,7 +21,7 @@ const theme = {
   fontSize: {
     small: 10,
     medium: 16,
-    large: 25,
+    large: 22,
   },
   fontWeights: {
     normal: "400",

@@ -1,13 +1,15 @@
 // React Native
-import { FlatList, View, StyleSheet, Pressable } from "react-native";
-import { useNavigate } from "react-router-native";
-import { Picker } from "@react-native-picker/picker";
+import { FlatList, View, StyleSheet, Pressable, Text } from "react-native";
+
+// React
+import React from "react";
 
 // Utils
 import getLatestReview from "../../utils/getLatestReview";
 
 // Components
 import RepositoryItem from "./RepositoryItem";
+import RepositoryListHeader from "./RepositoryListHeader";
 
 // Styles
 import theme from "../../theme";
@@ -17,6 +19,12 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     flex: 1,
+  },
+  header: {
+    fontFamily: theme.fonts.main,
+    fontWeight: "bold",
+    fontSize: theme.fontSize.medium,
+    textAlign: "center",
   },
   separator: {
     height: theme.spacing.medium,
@@ -33,58 +41,54 @@ const styles = StyleSheet.create({
 const ItemSeparator = () => <View style={styles.separator} />;
 
 // Component
-export default function RepositoryListContainer({ repositories, value, setValue }) {
-  let orderedRepositories = repositories;
+export default class RepositoryListContainer extends React.Component {
+  renderHeader = () => {
+    // Filter only the necessary props for the component
+    const { value, setValue, searchQuery, setSearchQuery } = this.props;
 
-  // React Router hook
-  const navigate = useNavigate();
-
-  // Handles clicking on a single repository
-  function handlePress(id) {
-    navigate(`/repository/${id}`);
-  }
-
-  // Order the repositories based on the newest reviewed to oldest
-  if (value === "Latest") {
-    orderedRepositories = repositories.slice().sort((a, b) => {
-      return getLatestReview(b) - getLatestReview(a);
-    });
-  }
-
-  // Repositories list
-  return (
-    <View style={styles.container}>
-      <FlatList
-        data={orderedRepositories}
-        keyExtractor={(item, index) => item?.id ?? index.toString()}
-        ItemSeparatorComponent={ItemSeparator}
-        ListHeaderComponent={() => 
-          <Picker
-            selectedValue={value}
-            onValueChange={setValue}>
-              <Picker.Item
-                label="Latest repositories"
-                value={"Latest"}
-              />
-              <Picker.Item
-                label="Highest rated repositories"
-                value={"Highest"}
-              />
-              <Picker.Item
-                label="Lowest rated repositories"
-                value={"Lowest"}
-              />
-          </Picker>        
-        }
-        renderItem={({ item }) => (
-          <Pressable 
-            onPress={() => handlePress(item.id)}
-            style={({pressed}) => pressed ? styles.pressed : styles.normal}
-          >
-            <RepositoryItem repository={item} />
-          </Pressable>
-        )}
+    // Render the header component on the main page
+    return(
+      <RepositoryListHeader
+        value={value} 
+        setValue={setValue} 
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
       />
-    </View>
-  );
+    )
+  }
+
+  // Render the repositories list
+  render() {
+    // Mutable array to hold the three order options
+    let orderedRepositories = this.props.repositories;
+
+    // Order the repositories based on the newest reviewed to oldest
+    if (this.props.value === "Latest") {
+      orderedRepositories = this.props.repositories.slice().sort((a, b) => {
+        return getLatestReview(b) - getLatestReview(a);
+      });
+    }
+
+    // Render the flatlist containing all of the repositories
+    return (
+      <View style={styles.container}>
+        <FlatList
+          data={orderedRepositories}
+          keyExtractor={(item, index) => item?.id ?? index.toString()}
+          ItemSeparatorComponent={ItemSeparator}
+          ListHeaderComponent={this.renderHeader}
+          renderItem={({ item }) => (
+            <Pressable 
+              onPress={() => this.props.handlePress(item.id)}
+              style={({pressed}) => pressed ? styles.pressed : styles.normal}
+            >
+              {this.props.loading && <Text style={styles.header}>Loading repositories...</Text>}
+              {this.props.error && <Text style={styles.header}>Failed to load repositories</Text>}
+              <RepositoryItem repository={item} />
+            </Pressable>
+          )}
+        />
+      </View>
+    );
+  }
 }

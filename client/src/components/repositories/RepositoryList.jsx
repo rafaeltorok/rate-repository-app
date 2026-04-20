@@ -1,5 +1,5 @@
 // React Native
-import { StyleSheet, Text } from "react-native";
+import { useNavigate } from "react-router-native";
 
 // React
 import { useState } from "react";
@@ -10,19 +10,10 @@ import useRepositories from "../../hooks/useRepositories";
 // Components
 import RepositoryListContainer from "./RepositoryListContainer";
 
-// Styles
-import theme from "../../theme";
+// Debounce
+import { useDebounce } from "use-debounce";
 
-const styles = StyleSheet.create({
-  header: {
-    fontFamily: theme.fonts.main,
-    fontWeight: "bold",
-    fontSize: theme.fontSize.large,
-    textAlign: "center",
-  },
-});
-
-// Component
+// Component responsible for rendering the main page
 export default function RepositoryList() {
   // Handle the ordering for the repositories list on the main page
   const [value, setValue] = useState("Latest");
@@ -45,21 +36,34 @@ export default function RepositoryList() {
       break;
   }
 
+  // Hold the repositories search field value
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Handle the search query debounce
+  const [debounceValue] = useDebounce(searchQuery, 500);
+
   // Fetch the list with all available repositories
-  const { repositories, loading, error } = useRepositories(orderBy, orderDirection);
+  const { repositories, loading, error } = useRepositories(orderBy, orderDirection, debounceValue);
 
-  // Loading screen
-  if (loading) {
-    return <Text style={styles.header}>Loading repositories...</Text>;
+  // React Router hook
+  const navigate = useNavigate();
+
+  // Handles clicking on a single repository
+  function handlePress(id) {
+    navigate(`/repository/${id}`);
   }
 
-  // Error screen
-  if (error) {
-    return <Text style={styles.header}>Failed to load repositories</Text>;
-  }
-
-  // Renders the repositories container
+  // Render the repositories container
   return (
-    <RepositoryListContainer repositories={repositories} value={value} setValue={setValue} />
+    <RepositoryListContainer 
+      repositories={repositories} 
+      loading={loading}
+      error={error}
+      value={value} 
+      setValue={setValue} 
+      searchQuery={searchQuery}
+      setSearchQuery={setSearchQuery}
+      handlePress={handlePress}
+    />
   );
 }
