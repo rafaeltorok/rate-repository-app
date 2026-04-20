@@ -1,5 +1,6 @@
 // React Native
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { View, Text, FlatList, StyleSheet, Alert } from "react-native";
+import { useNavigate } from "react-router-native";
 
 // Components
 import ReviewItem from "../repositories/reviews/ReviewItem";
@@ -36,6 +37,26 @@ export default function MyReviews() {
   // Hook to get the list with all the user's reviews
   const { myReviews, loading, error } = useMyReviews();
 
+  // React Router hook
+  const navigate = useNavigate();
+
+  // Handle the link to visit the respective repository
+  function handleVisit(repositoryId) {
+    navigate(`/repository/${repositoryId}`);
+  }
+
+  // Delete a user review
+  function handleDelete(repositoryId) {
+    Alert.alert('Delete review', 'Are you sure you want to delete this review?', [
+      {
+        text: 'CANCEL',
+        onPress: () => console.log('CANCEL Pressed'),
+        style: 'cancel',
+      },
+      {text: 'DELETE', onPress: () => console.log('DELETE Pressed')},
+    ]);
+  }
+
   // Loading screen
   if (loading) {
     return <Text style={styles.header}>Loading reviews...</Text>;
@@ -53,7 +74,12 @@ export default function MyReviews() {
       ItemSeparatorComponent={ItemSeparator}
       ListEmptyComponent={<Text style={styles.noReviews}>No reviews yet</Text>}
       renderItem={({ item }) => (
-        <ReviewItem review={item} myReview={true} />
+        <ReviewItem 
+          review={item} 
+          myReview={true} 
+          handleVisit={handleVisit} 
+          handleDelete={handleDelete} 
+        />
       )}
     />
   );

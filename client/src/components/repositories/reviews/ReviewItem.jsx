@@ -4,13 +4,19 @@ import { View, StyleSheet, Text } from "react-native";
 // Utils
 import formatDate from "../../../utils/formatDate";
 
+// Components
+import ReviewOptions from "./ReviewOptions";
+
 // Styles
 import theme from "../../../theme";
 
 const styles = StyleSheet.create({
-  reviewItem: {
+  container: {
     padding: theme.spacing.large,
     backgroundColor: theme.colors.white,
+    flexDirection: "column",
+  },
+  reviewItem: {
     flexDirection: "row",
   },
   reviewInfo: {
@@ -40,11 +46,11 @@ const styles = StyleSheet.create({
   },
   text: {
     paddingTop: theme.spacing.small,
-  }
+  },
 });
 
 // Component
-export default function ReviewItem({ review, myReview = false }) {
+export default function ReviewItem({ review, myReview = false, handleVisit, handleDelete }) {
   // Error message
   if (!review) {
     return <Text>Failed to load review</Text>
@@ -52,19 +58,29 @@ export default function ReviewItem({ review, myReview = false }) {
 
   // Display the review
   return (
-    <View style={styles.reviewItem}>
-      <View style={styles.ratingCircle}>
-        <Text style={styles.ratingText}>{review.rating}</Text>
+    <View style={styles.container}>
+      <View style={styles.reviewItem}>
+        <View style={styles.ratingCircle}>
+          <Text style={styles.ratingText}>{review.rating}</Text>
+        </View>
+        <View style={styles.reviewInfo}>
+          {myReview ? (
+            <Text style={styles.username}>{review.repository.ownerName}/{review.repository.name}</Text>
+          ) : (
+            <Text style={styles.username}>{review.user.username}</Text>
+          )}
+          <Text style={styles.date}>{formatDate(review.createdAt)}</Text>
+          <Text style={styles.text}>{review.text}</Text>
+        </View>
       </View>
-      <View style={styles.reviewInfo}>
-        {myReview ? (
-          <Text style={styles.username}>{review.repository.ownerName}/{review.repository.name}</Text>
-        ) : (
-          <Text style={styles.username}>{review.user.username}</Text>
-        )}
-        <Text style={styles.date}>{formatDate(review.createdAt)}</Text>
-        <Text style={styles.text}>{review.text}</Text>
-      </View>
+      {myReview &&
+        <ReviewOptions 
+          repositoryId={review.repository.id}
+          reviewId={review.id}
+          handleVisit={handleVisit} 
+          handleDelete={handleDelete}
+        />
+      }
     </View>
   );
 }
