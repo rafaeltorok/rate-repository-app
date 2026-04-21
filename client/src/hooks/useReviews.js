@@ -9,8 +9,8 @@ export default function useReviews(id) {
     variables: { id }
   });
 
-  const reviews = data
-    ? data.repository?.reviews.edges
+  const reviews = data?.repository?.reviews?.edges
+    ? data.repository.reviews.edges
         .map((edge) => edge.node)
         .filter((review) => review != null)
     : [];
