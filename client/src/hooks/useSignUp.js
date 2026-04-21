@@ -1,5 +1,5 @@
 // Apollo client dependencies
-import { useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client/react";
 import { CREATE_USER } from "../graphql/users";
 
 // Custom hook

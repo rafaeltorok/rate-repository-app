@@ -1,5 +1,5 @@
 // Apollo client dependencies
-import { useApolloClient, useMutation } from "@apollo/client";
+import { useApolloClient, useMutation } from "@apollo/client/react";
 import { AUTHENTICATE_USER } from "../graphql/authentication";
 
 // Hooks

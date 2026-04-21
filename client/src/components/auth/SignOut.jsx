@@ -2,7 +2,7 @@
 import { View, Text, Button, StyleSheet } from "react-native";
 
 // GraphQL queries
-import { useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client/react";
 import { LOGGED_USER } from "../../graphql/authentication";
 
 // React Router
@@ -41,7 +41,14 @@ export default function SignOut() {
 
   // Handles the logout option for the user
   async function handleSignOut() {
-    await signOut();
+    try {
+      await signOut();
+    } catch (err) {
+      // Ignore abort errors caused by resetStore
+      if (err.name !== "AbortError") {
+        console.log(err);
+      }
+    }
 
     // Navigates to the Sign-in tab
     navigate("/signin");

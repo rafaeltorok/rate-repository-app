@@ -22,7 +22,7 @@ The following environment variables are required:
 
 - Client
   ```env
-  APOLLO_SERVER_URL=http://<server-ip>:4000/graphql
+  EXPO_PUBLIC_APOLLO_SERVER_URL=http://<server-ip>:4000/graphql
   ```
 
 - Server

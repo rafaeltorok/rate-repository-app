@@ -1,5 +1,5 @@
 // Apollo client
-import { useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client/react";
 import { GET_REVIEWS } from "../graphql/reviews";
 
 // Custom hook

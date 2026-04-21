@@ -1,5 +1,5 @@
 // Apollo client dependencies
-import { useApolloClient } from "@apollo/client";
+import { useApolloClient } from "@apollo/client/react";
 
 // Hooks
 import useAuthStorage from "./useAuthStorage";

@@ -3,7 +3,7 @@ import { View, StyleSheet, ScrollView } from "react-native";
 import Constants from "expo-constants";
 
 // GraphQL queries
-import { useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client/react";
 import { LOGGED_USER } from "../graphql/authentication";
 
 // Components

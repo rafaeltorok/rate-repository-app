@@ -1,6 +1,3 @@
-// Dotenv
-import "dotenv/config";
-
 export default {
   expo: {
     name: "rate-repository-app",
@@ -29,7 +26,6 @@ export default {
     },
     extra: {
       env: process.env.ENV, // For command line arguments. e.g. ENV=development
-      APOLLO_SERVER_URL: process.env.APOLLO_SERVER_URL, // The Backend Server URL for GraphQL queries
     },
   },
 };
