@@ -7,6 +7,7 @@ import ReviewItem from "../repositories/reviews/ReviewItem";
 
 // Hooks
 import useMyReviews from "../../hooks/useMyReviews";
+import useDeleteReview from "../../hooks/useDeleteReview";
 
 // Styles
 import theme from "../../theme";
@@ -35,7 +36,8 @@ const ItemSeparator = () => <View style={styles.separator} />;
 // Render all the reviews for the currently logged in user
 export default function MyReviews() {
   // Hook to get the list with all the user's reviews
-  const { myReviews, loading, error } = useMyReviews();
+  const { myReviews, loading, error, refetch } = useMyReviews();
+  const { deleteReview } = useDeleteReview();
 
   // React Router hook
   const navigate = useNavigate();
@@ -46,14 +48,19 @@ export default function MyReviews() {
   }
 
   // Delete a user review
-  function handleDelete(repositoryId) {
+  function handleDelete(reviewId) {
     Alert.alert('Delete review', 'Are you sure you want to delete this review?', [
       {
         text: 'CANCEL',
-        onPress: () => console.log('CANCEL Pressed'),
         style: 'cancel',
       },
-      {text: 'DELETE', onPress: () => console.log('DELETE Pressed')},
+      {
+        text: 'DELETE', 
+        onPress: async () => {
+          await deleteReview(reviewId);
+          await refetch();  // Refetch the list of reviews to update the UI
+        }
+      },
     ]);
   }
 

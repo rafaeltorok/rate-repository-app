@@ -4,7 +4,7 @@ import { GET_CURRENT_USER } from "../graphql/users";
 
 // Custom hook
 export default function useMyReviews() {
-  const { data, loading, error } = useQuery(GET_CURRENT_USER, {
+  const { data, loading, error, refetch } = useQuery(GET_CURRENT_USER, {
     fetchPolicy: "cache-and-network",
     variables: { includeReviews: true }
   });
@@ -15,5 +15,5 @@ export default function useMyReviews() {
         .filter((review) => review != null)
     : [];
 
-  return { myReviews, loading, error };
+  return { myReviews, loading, error, refetch };
 }
