@@ -4,12 +4,17 @@
 An Android mobile app to rate Github repositories. Based on the project from the React Native section of the FullStackOpen course by MOOC Finland.
 
 ## Table of Contents
+- [Requirements](#requirements)
 - [Env](#env)
 - [Client](#client)
 - [Server](#server)
 - [Tests](#tests)
 - [FAQ](#-faq)
 - [Notes](#notes)
+
+
+## Requirements
+This app requires sdk version 55 in order to work.
 
 
 ## Env
