@@ -113,7 +113,7 @@ export default function SignInForm({ onSubmit, error }) {
             fontWeight: theme.fontWeights.bold,
           }}
         >
-          {error.graphQLErrors[0].message}
+          {error?.graphQLErrors[0]?.message}
         </Text>
       )}
     </View>
