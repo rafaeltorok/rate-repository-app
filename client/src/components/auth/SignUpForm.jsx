@@ -147,7 +147,7 @@ export default function SignUpForm({ onSubmit, error }) {
             fontWeight: theme.fontWeights.bold,
           }}
         >
-          {error?.graphQLErrors[0]?.message}
+          {error?.message}
         </Text>
       )}
     </View>
