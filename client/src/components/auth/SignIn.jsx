@@ -41,7 +41,7 @@ export default function SignIn() {
       // Sign in mutation
       await signIn({ username, password });
 
-      // Redirect after successful authentication
+      // Redirect to the repositories list after a successful authentication
       navigate("/");
     } catch (err) {
       console.log(err);

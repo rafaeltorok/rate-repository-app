@@ -4,6 +4,10 @@ export const AUTHENTICATE_USER = gql`
   mutation AuthenticateUser($username: String!, $password: String!) {
     authenticate(credentials: { username: $username, password: $password }) {
       accessToken
+      user {
+        id
+        username
+      }
     }
   }
 `;

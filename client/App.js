@@ -16,8 +16,6 @@ import AuthStorageContext from "./src/contexts/AuthStorageContext";
 import { ApolloProvider } from "@apollo/client/react";
 const authStorage = new AuthStorage();
 const apolloClient = createApolloClient(authStorage);
-console.log('Client type:', typeof apolloClient);
-console.log('Client methods:', apolloClient ? Object.keys(apolloClient) : 'undefined');
 
 const App = () => {
   return (

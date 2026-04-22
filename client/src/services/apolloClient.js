@@ -4,11 +4,12 @@ import { SetContextLink } from "@apollo/client/link/context";
 
 // Client function
 export default function createApolloClient(authStorage) {
-  // Handles the link to the Apollo Server
+  // Handle the link to the Apollo Server
   const httpLink = new HttpLink({
     uri: process.env.EXPO_PUBLIC_APOLLO_SERVER_URL,
   });
 
+  // Handle the current logged in user access token
   const authLink = new SetContextLink(async ({ headers }) => {
     try {
       const accessToken = await authStorage.getAccessToken();
@@ -25,8 +26,6 @@ export default function createApolloClient(authStorage) {
       };
     }
   });
-
-  console.log(`ENV: ${process.env.EXPO_PUBLIC_APOLLO_SERVER_URL}`)
 
   return new ApolloClient({
     link: authLink.concat(httpLink),

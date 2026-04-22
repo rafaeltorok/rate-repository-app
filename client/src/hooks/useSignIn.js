@@ -1,6 +1,6 @@
 // Apollo client dependencies
 import { useApolloClient, useMutation } from "@apollo/client/react";
-import { AUTHENTICATE_USER } from "../graphql/authentication";
+import { AUTHENTICATE_USER, LOGGED_USER } from "../graphql/authentication";
 
 // Hooks
 import useAuthStorage from "./useAuthStorage";
@@ -25,8 +25,12 @@ export default function useSignIn() {
     // Persist the access token for future authenticated requests
     await authStorage.setAccessToken(data?.authenticate.accessToken);
 
-    // Refetches queries to update authentication state
-    await apolloClient.resetStore();
+    // Write the logged-in user directly into the cache
+    // instead of resetting the entire store
+    apolloClient.writeQuery({
+      query: LOGGED_USER,
+      data: { me: data?.authenticate.user },
+    });
 
     return result;
   };
