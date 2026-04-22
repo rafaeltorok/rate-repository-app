@@ -42,7 +42,12 @@ export default function CreateReview() {
       const numberRating = Number(rating);
 
       // Create review mutation with a valid rating number
-      const review = await createReview({ ownerName, repositoryName, rating: numberRating, text });
+      const review = await createReview({
+        ownerName,
+        repositoryName,
+        rating: numberRating,
+        text,
+      });
 
       // Redirect after successfully creating a new review
       navigate(`/repository/${review.repositoryId}`);
@@ -58,6 +63,10 @@ export default function CreateReview() {
 
   // Login form when there are no currently logged in users
   return (
-    <CreateReviewForm repositoriesList={repositories} onSubmit={onSubmit} error={reviewResult?.error} />
+    <CreateReviewForm
+      repositoriesList={repositories}
+      onSubmit={onSubmit}
+      error={reviewResult?.error}
+    />
   );
 }

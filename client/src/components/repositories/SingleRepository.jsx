@@ -1,6 +1,6 @@
 // React Native
 import { StyleSheet, Text, View } from "react-native";
-import { useParams } from 'react-router-native';
+import { useParams } from "react-router-native";
 
 // Components
 import ReviewListContainer from "./reviews/ReviewListContainer";
@@ -39,16 +39,15 @@ export default function SingleRepository() {
 
   // Error screen
   if (error) {
-    return <Text style={styles.header}>Failed to load repository information</Text>;
+    return (
+      <Text style={styles.header}>Failed to load repository information</Text>
+    );
   }
 
   // Display repository info
   return (
     <View style={styles.container}>
-      <ReviewListContainer 
-        id={id}
-        repository={data?.repository}
-      />
+      <ReviewListContainer id={id} repository={data?.repository} />
     </View>
   );
 }

@@ -35,11 +35,11 @@ export default function createApolloClient(authStorage) {
         Repository: {
           fields: {
             reviews: {
-              merge: false
-            }
-          }
-        }
-      }
+              merge: false,
+            },
+          },
+        },
+      },
     }),
   });
 }

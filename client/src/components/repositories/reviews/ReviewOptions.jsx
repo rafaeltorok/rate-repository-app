@@ -9,11 +9,16 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     margin: theme.spacing.medium,
-    gap: theme.spacing.large
+    gap: theme.spacing.large,
   },
 });
 
-export default function ReviewOptions({ repositoryId, reviewId, handleVisit, handleDelete }) {
+export default function ReviewOptions({
+  repositoryId,
+  reviewId,
+  handleVisit,
+  handleDelete,
+}) {
   return (
     <View style={styles.reviewOptions}>
       <Button
@@ -26,5 +31,5 @@ export default function ReviewOptions({ repositoryId, reviewId, handleVisit, han
         onPress={() => handleDelete(reviewId)}
       />
     </View>
-  )
+  );
 }

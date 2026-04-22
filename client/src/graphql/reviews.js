@@ -24,17 +24,17 @@ export const GET_REVIEWS = gql`
 `;
 
 export const CREATE_REVIEW = gql`
-  mutation CreateReview (
+  mutation CreateReview(
     $ownerName: String!
     $repositoryName: String!
     $rating: Int!
     $text: String
-    ) {
-    createReview (
+  ) {
+    createReview(
       review: {
-        ownerName: $ownerName,
-        repositoryName: $repositoryName,
-        rating: $rating,
+        ownerName: $ownerName
+        repositoryName: $repositoryName
+        rating: $rating
         text: $text
       }
     ) {
@@ -48,7 +48,7 @@ export const CREATE_REVIEW = gql`
 `;
 
 export const DELETE_REVIEW = gql`
-  mutation DeleteReview ($id: ID!) {
+  mutation DeleteReview($id: ID!) {
     deleteReview(id: $id)
   }
 `;

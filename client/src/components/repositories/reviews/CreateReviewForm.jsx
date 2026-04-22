@@ -1,6 +1,6 @@
 // React Native
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
-import { Picker } from '@react-native-picker/picker';
+import { Picker } from "@react-native-picker/picker";
 
 // Formik
 import { useFormik } from "formik";
@@ -38,22 +38,21 @@ const styles = StyleSheet.create({
 });
 
 // Component
-export default function CreateReviewForm({ repositoriesList, onSubmit, error }) {
+export default function CreateReviewForm({
+  repositoriesList,
+  onSubmit,
+  error,
+}) {
   // Yup validation Schema
   const validationSchema = yup.object().shape({
-    ownerName: yup
-      .string()
-      .required("The repository owner is required"),
-    repositoryName: yup
-      .string()
-      .required("The repository name is required"),
+    ownerName: yup.string().required("The repository owner is required"),
+    repositoryName: yup.string().required("The repository name is required"),
     rating: yup
       .number()
       .min(0)
       .max(100)
       .required("Rating must be a value between 0 and 100"),
-    text: yup
-      .string()
+    text: yup.string(),
   });
 
   // Create an instance of Formik
@@ -77,18 +76,16 @@ export default function CreateReviewForm({ repositoriesList, onSubmit, error }) 
         selectedValue={formik.values.ownerName}
         onValueChange={(itemValue) =>
           formik.setFieldValue("ownerName", itemValue)
-        }>
-          <Picker.Item 
-            label="Select repository owner"
-            value=""
+        }
+      >
+        <Picker.Item label="Select repository owner" value="" />
+        {repositoriesList.map((repository) => (
+          <Picker.Item
+            key={repository.id}
+            label={repository.ownerName}
+            value={repository.ownerName}
           />
-          {repositoriesList.map((repository) => (
-            <Picker.Item 
-              key={repository.id} 
-              label={repository.ownerName} 
-              value={repository.ownerName} 
-            />
-          ))}
+        ))}
       </Picker>
       {formik.touched.ownerName && formik.errors.ownerName && (
         <Text style={{ color: theme.colors.error }}>
@@ -101,18 +98,16 @@ export default function CreateReviewForm({ repositoriesList, onSubmit, error }) 
         selectedValue={formik.values.repositoryName}
         onValueChange={(itemValue) =>
           formik.setFieldValue("repositoryName", itemValue)
-        }>
-          <Picker.Item 
-            label="Select repository name"
-            value=""
+        }
+      >
+        <Picker.Item label="Select repository name" value="" />
+        {repositoriesList.map((repository) => (
+          <Picker.Item
+            key={repository.id}
+            label={repository.name}
+            value={repository.name}
           />
-          {repositoriesList.map((repository) => (
-            <Picker.Item 
-              key={repository.id} 
-              label={repository.name} 
-              value={repository.name} 
-            />
-          ))}
+        ))}
       </Picker>
       {formik.touched.repositoryName && formik.errors.repositoryName && (
         <Text style={{ color: theme.colors.error }}>
@@ -124,9 +119,7 @@ export default function CreateReviewForm({ repositoriesList, onSubmit, error }) 
       <TextInput
         style={[
           styles.inputField,
-          formik.touched.rating &&
-            formik.errors.rating &&
-            styles.errorField,
+          formik.touched.rating && formik.errors.rating && styles.errorField,
         ]}
         keyboardType="numeric"
         placeholder="0"
@@ -160,7 +153,6 @@ export default function CreateReviewForm({ repositoriesList, onSubmit, error }) 
           {error?.message}
         </Text>
       )}
-
     </View>
   );
 }

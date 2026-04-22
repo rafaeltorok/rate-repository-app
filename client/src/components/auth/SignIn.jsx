@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
   link: {
     textDecorationLine: "underline",
     color: theme.colors.primary,
-    textAlign: "center"
-  }
+    textAlign: "center",
+  },
 });
 
 // Component
@@ -62,9 +62,7 @@ export default function SignIn() {
   return (
     <View>
       <SignInForm onSubmit={onSubmit} error={result?.error} />
-      <Pressable
-        onPress={handlePress}
-      >
+      <Pressable onPress={handlePress}>
         <Text style={styles.link}>Not an user yet? Create an account</Text>
       </Pressable>
     </View>

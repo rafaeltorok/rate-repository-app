@@ -89,9 +89,7 @@ export default function Main() {
         {/* Display all the logged in user's reviews */}
         <Route
           path="/myreviews"
-          element={
-            data?.me ? <MyReviews /> : <Navigate to="/signin" replace />
-          }
+          element={data?.me ? <MyReviews /> : <Navigate to="/signin" replace />}
         />
 
         {/* About page */}

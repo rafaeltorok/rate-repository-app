@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
   normal: {
     backgroundColor: theme.colors.white,
-  }
+  },
 });
 
 // Separator
@@ -44,15 +44,15 @@ export default class RepositoryListContainer extends React.Component {
     const { value, setValue, searchQuery, setSearchQuery } = this.props;
 
     // Render the header component on the main page
-    return(
+    return (
       <RepositoryListHeader
-        value={value} 
-        setValue={setValue} 
+        value={value}
+        setValue={setValue}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       />
-    )
-  }
+    );
+  };
 
   // Conditionally renders the UI messages
   renderEmptyState = () => {
@@ -66,7 +66,7 @@ export default class RepositoryListContainer extends React.Component {
       // Empty repositories list message
       return <Text style={styles.header}>No repositories found</Text>;
     }
-  }
+  };
 
   // Render the repositories list
   render() {
@@ -79,9 +79,11 @@ export default class RepositoryListContainer extends React.Component {
           ItemSeparatorComponent={ItemSeparator}
           ListHeaderComponent={this.renderHeader}
           renderItem={({ item }) => (
-            <Pressable 
+            <Pressable
               onPress={() => this.props.handlePress(item.id)}
-              style={({pressed}) => pressed ? styles.pressed : styles.normal}
+              style={({ pressed }) =>
+                pressed ? styles.pressed : styles.normal
+              }
             >
               <RepositoryItem repository={item} />
             </Pressable>

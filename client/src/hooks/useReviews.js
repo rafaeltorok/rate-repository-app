@@ -6,7 +6,7 @@ import { GET_REVIEWS } from "../graphql/reviews";
 export default function useReviews(id) {
   const { data, loading, error } = useQuery(GET_REVIEWS, {
     fetchPolicy: "cache-and-network",
-    variables: { id }
+    variables: { id },
   });
 
   const reviews = data?.repository?.reviews?.edges

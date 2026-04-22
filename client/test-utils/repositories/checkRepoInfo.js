@@ -1,13 +1,13 @@
 // Test dependencies
-import { within } from '@testing-library/react-native';
+import { within } from "@testing-library/react-native";
 
 // Utils
-import formatNumber from '../../src/utils/formatNumber';
+import formatNumber from "../../src/utils/formatNumber";
 
 export default function checkRepoInfo(repositoryItem, repositoryInfo) {
   // Isolate the test repository on the page
   const repo = within(repositoryItem);
-  
+
   // Repository full name field
   expect(repo.getByText(repositoryInfo.fullName));
 

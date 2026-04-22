@@ -43,7 +43,11 @@ export default function RepositoryList() {
   const [debounceValue] = useDebounce(searchQuery, 500);
 
   // Fetch the list with all available repositories
-  const { repositories, loading, error } = useRepositories(orderBy, orderDirection, debounceValue);
+  const { repositories, loading, error } = useRepositories(
+    orderBy,
+    orderDirection,
+    debounceValue,
+  );
 
   // React Router hook
   const navigate = useNavigate();
@@ -55,12 +59,12 @@ export default function RepositoryList() {
 
   // Render the repositories container
   return (
-    <RepositoryListContainer 
-      repositories={repositories} 
+    <RepositoryListContainer
+      repositories={repositories}
       loading={loading}
       error={error}
-      value={value} 
-      setValue={setValue} 
+      value={value}
+      setValue={setValue}
       searchQuery={searchQuery}
       setSearchQuery={setSearchQuery}
       handlePress={handlePress}

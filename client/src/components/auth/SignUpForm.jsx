@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
 // Component
 export default function SignUpForm({ onSubmit, error }) {
   // Handle the password confirmation
-  yup.addMethod(yup.string, 'equalTo', handlePasswordConfirmation);
+  yup.addMethod(yup.string, "equalTo", handlePasswordConfirmation);
 
   // Yup validation Schema
   const validationSchema = yup.object().shape({
@@ -58,7 +58,7 @@ export default function SignUpForm({ onSubmit, error }) {
       .required("Password is required"),
     confirmPassword: yup
       .string()
-      .equalTo(yup.ref('password'), 'Passwords must match')
+      .equalTo(yup.ref("password"), "Passwords must match")
       .required("You must confirm your password"),
   });
 

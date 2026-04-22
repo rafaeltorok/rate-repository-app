@@ -20,13 +20,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: theme.fontSize.large,
     textAlign: "center",
-    marginTop: theme.spacing.large
+    marginTop: theme.spacing.large,
   },
   noReviews: {
     fontWeight: theme.fontWeights.bold,
     textAlign: "center",
     marginTop: theme.spacing.medium,
-  }
+  },
 });
 
 // Separator
@@ -36,14 +36,15 @@ const ItemSeparator = () => <View style={styles.separator} />;
 export default function ReviewListContainer({ id, repository }) {
   // Fetch all reviews from a particular repository
   const { reviews, loading } = useReviews(id);
-  
+
   // Loading screen
   if (loading) {
     return <Text style={styles.header}>Loading reviews...</Text>;
   }
-  
+
   // Order the reviews from newest to oldest
-  const orderedReviews = reviews.slice().sort((a, b) => {  // Create a copy of the original array to be sorted
+  const orderedReviews = reviews.slice().sort((a, b) => {
+    // Create a copy of the original array to be sorted
     return new Date(b.createdAt) - new Date(a.createdAt);
   });
 
@@ -53,11 +54,11 @@ export default function ReviewListContainer({ id, repository }) {
       data={orderedReviews}
       keyExtractor={(item, index) => item?.id ?? index.toString()}
       ItemSeparatorComponent={ItemSeparator}
-      ListHeaderComponent={() => <RepositoryItem repository={repository} showFullInfo={true} />}
-      ListEmptyComponent={<Text style={styles.noReviews}>No reviews yet</Text>}
-      renderItem={({ item }) => (
-        <ReviewItem review={item} />
+      ListHeaderComponent={() => (
+        <RepositoryItem repository={repository} showFullInfo={true} />
       )}
+      ListEmptyComponent={<Text style={styles.noReviews}>No reviews yet</Text>}
+      renderItem={({ item }) => <ReviewItem review={item} />}
     />
   );
 }

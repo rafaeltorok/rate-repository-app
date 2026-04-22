@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   ratingText: {
     color: theme.colors.primary,
     fontSize: theme.fontSize.medium,
-    fontWeight: theme.fontWeights.bold
+    fontWeight: theme.fontWeights.bold,
   },
   username: {
     fontWeight: theme.fontWeights.bold,
@@ -50,10 +50,15 @@ const styles = StyleSheet.create({
 });
 
 // Component
-export default function ReviewItem({ review, myReview = false, handleVisit, handleDelete }) {
+export default function ReviewItem({
+  review,
+  myReview = false,
+  handleVisit,
+  handleDelete,
+}) {
   // Error message
   if (!review) {
-    return <Text>Failed to load review</Text>
+    return <Text>Failed to load review</Text>;
   }
 
   // Display the review
@@ -65,7 +70,9 @@ export default function ReviewItem({ review, myReview = false, handleVisit, hand
         </View>
         <View style={styles.reviewInfo}>
           {myReview ? (
-            <Text style={styles.username}>{review.repository.ownerName}/{review.repository.name}</Text>
+            <Text style={styles.username}>
+              {review.repository.ownerName}/{review.repository.name}
+            </Text>
           ) : (
             <Text style={styles.username}>{review.user.username}</Text>
           )}
@@ -73,14 +80,14 @@ export default function ReviewItem({ review, myReview = false, handleVisit, hand
           <Text style={styles.text}>{review.text}</Text>
         </View>
       </View>
-      {myReview &&
-        <ReviewOptions 
+      {myReview && (
+        <ReviewOptions
           repositoryId={review.repository.id}
           reviewId={review.id}
-          handleVisit={handleVisit} 
+          handleVisit={handleVisit}
           handleDelete={handleDelete}
         />
-      }
+      )}
     </View>
   );
 }

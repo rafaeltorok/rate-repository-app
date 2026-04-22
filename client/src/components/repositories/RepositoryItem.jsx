@@ -2,7 +2,7 @@
 import { View, StyleSheet, Text, Button } from "react-native";
 
 // Expo Linking
-import * as Linking from 'expo-linking';
+import * as Linking from "expo-linking";
 
 // Components
 import ItemHeader from "./ItemHeader";
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   repositoryItem: {
     padding: theme.spacing.large,
     backgroundColor: theme.colors.white,
-    marginBottom: theme.spacing.medium
+    marginBottom: theme.spacing.medium,
   },
   header: {
     fontFamily: theme.fonts.main,

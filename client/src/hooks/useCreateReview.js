@@ -8,7 +8,9 @@ export default function useCreateReview() {
 
   const createReview = async ({ ownerName, repositoryName, rating, text }) => {
     // Send the mutation query to create a new review
-    const result = await mutate({ variables: { ownerName, repositoryName, rating, text } });
+    const result = await mutate({
+      variables: { ownerName, repositoryName, rating, text },
+    });
     return result.data.createReview;
   };
 

@@ -6,7 +6,7 @@ import { GET_CURRENT_USER } from "../graphql/users";
 export default function useMyReviews() {
   const { data, loading, error, refetch } = useQuery(GET_CURRENT_USER, {
     fetchPolicy: "cache-and-network",
-    variables: { includeReviews: true }
+    variables: { includeReviews: true },
   });
 
   const myReviews = data

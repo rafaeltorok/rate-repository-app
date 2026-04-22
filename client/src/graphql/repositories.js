@@ -2,12 +2,12 @@ import { gql } from "graphql-tag";
 
 export const GET_REPOSITORIES = gql`
   query (
-    $orderBy: AllRepositoriesOrderBy!,
-    $orderDirection: OrderDirection!,
+    $orderBy: AllRepositoriesOrderBy!
+    $orderDirection: OrderDirection!
     $searchKeyword: String
   ) {
-    repositories (
-      orderBy: $orderBy,
+    repositories(
+      orderBy: $orderBy
       orderDirection: $orderDirection
       searchKeyword: $searchKeyword
     ) {
@@ -46,7 +46,7 @@ export const GET_REPOSITORIES = gql`
 
 export const GET_SINGLE_REPOSITORY = gql`
   query ($id: ID!) {
-    repository (id: $id) {
+    repository(id: $id) {
       id
       ownerName
       name

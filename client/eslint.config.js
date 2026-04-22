@@ -38,7 +38,7 @@ export default [
     plugins: {
       react: reactPlugin,
       "react-native": reactNativePlugin,
-      jest: pluginJest,  // still needed for Jest globals/rules in these files
+      jest: pluginJest, // still needed for Jest globals/rules in these files
     },
     settings: {
       react: { version: "detect" },

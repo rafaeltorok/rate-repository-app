@@ -21,13 +21,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: theme.fontSize.medium,
     textAlign: "center",
-    marginTop: theme.spacing.large
+    marginTop: theme.spacing.large,
   },
   noReviews: {
     fontWeight: theme.fontWeights.bold,
     textAlign: "center",
     marginTop: theme.spacing.medium,
-  }
+  },
 });
 
 // Separator
@@ -49,19 +49,23 @@ export default function MyReviews() {
 
   // Delete a user review
   function handleDelete(reviewId) {
-    Alert.alert('Delete review', 'Are you sure you want to delete this review?', [
-      {
-        text: 'CANCEL',
-        style: 'cancel',
-      },
-      {
-        text: 'DELETE', 
-        onPress: async () => {
-          await deleteReview(reviewId);
-          await refetch();  // Refetch the list of reviews to update the UI
-        }
-      },
-    ]);
+    Alert.alert(
+      "Delete review",
+      "Are you sure you want to delete this review?",
+      [
+        {
+          text: "CANCEL",
+          style: "cancel",
+        },
+        {
+          text: "DELETE",
+          onPress: async () => {
+            await deleteReview(reviewId);
+            await refetch(); // Refetch the list of reviews to update the UI
+          },
+        },
+      ],
+    );
   }
 
   // Loading screen
@@ -81,11 +85,11 @@ export default function MyReviews() {
       ItemSeparatorComponent={ItemSeparator}
       ListEmptyComponent={<Text style={styles.noReviews}>No reviews yet</Text>}
       renderItem={({ item }) => (
-        <ReviewItem 
-          review={item} 
-          myReview={true} 
-          handleVisit={handleVisit} 
-          handleDelete={handleDelete} 
+        <ReviewItem
+          review={item}
+          myReview={true}
+          handleVisit={handleVisit}
+          handleDelete={handleDelete}
         />
       )}
     />

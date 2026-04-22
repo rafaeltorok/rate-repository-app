@@ -1,6 +1,6 @@
 // React Native
 import { NativeRouter } from "react-router-native";
-import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from "expo-status-bar";
 
 // Components
 import Main from "./src/components/Main";

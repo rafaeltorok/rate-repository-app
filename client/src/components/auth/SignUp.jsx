@@ -54,7 +54,5 @@ export default function SignUp() {
   }
 
   // Sign up form when there are no currently logged in users
-  return (
-    <SignUpForm onSubmit={onSubmit} error={result?.error} />
-  );
+  return <SignUpForm onSubmit={onSubmit} error={result?.error} />;
 }
