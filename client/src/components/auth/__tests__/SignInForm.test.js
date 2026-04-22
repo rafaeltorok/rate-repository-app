@@ -12,7 +12,7 @@ describe('SignIn', () => {
       const onSubmit = jest.fn();
 
       // Render the Sign-in form
-      render(<SignInForm onSubmit={onSubmit}/>);
+      render(< SignInForm onSubmit={onSubmit} error={null} />);
 
       // Enter both username and password on the form input fields
       fireEvent.changeText(screen.getByPlaceholderText('username'), 'user');

@@ -1,3 +1,6 @@
+// Mock the component to prevent errors related to the search bar icon
+jest.mock('../RepositoryListHeader', () => () => null);
+
 // Testing dependencies
 import { render, screen } from '@testing-library/react-native';
 
@@ -17,8 +20,19 @@ describe('RepositoryList', () => {
       // Transform the test data to match the current format used by the component
       const repositoriesList = repositories.edges.map(edge => edge.node);
 
-      // Render the component
-      render(<RepositoryListContainer repositories={repositoriesList} />);
+      // Render the component and mocks the necessary props for it to work
+      render(
+        <RepositoryListContainer 
+          repositories={repositoriesList}
+          loading={false}
+          error={null}
+          value="Latest"
+          setValue={() => {}}
+          searchQuery=""
+          setSearchQuery={() => {}}
+          handlePress={() => {}}
+        />
+      );
 
       // Get all repositories being displayed on the UI
       const repositoryItems = screen.getAllByTestId('repositoryItem');
