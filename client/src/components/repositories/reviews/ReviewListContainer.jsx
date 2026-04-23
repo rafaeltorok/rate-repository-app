@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   header: {
     fontFamily: theme.fonts.main,
     fontWeight: "bold",
-    fontSize: theme.fontSize.large,
+    fontSize: theme.fontSize.medium,
     textAlign: "center",
     marginTop: theme.spacing.large,
   },
@@ -35,12 +35,17 @@ const ItemSeparator = () => <View style={styles.separator} />;
 // Component
 export default function ReviewListContainer({ id, repository }) {
   // Fetch all reviews from a particular repository
-  const { reviews, loading } = useReviews(id);
+  const { data, loading, fetchMore } = useReviews({
+    id,
+    first: 3
+  });
 
-  // Loading screen
-  if (loading) {
-    return <Text style={styles.header}>Loading reviews...</Text>;
-  }
+  // Filter the reviews form the response data
+  const reviews = data?.repository?.reviews?.edges
+    ? data.repository.reviews.edges
+        .map((edge) => edge.node)
+        .filter((review) => review != null)
+    : [];
 
   // Order the reviews from newest to oldest
   const orderedReviews = reviews.slice().sort((a, b) => {
@@ -57,7 +62,16 @@ export default function ReviewListContainer({ id, repository }) {
       ListHeaderComponent={() => (
         <RepositoryItem repository={repository} showFullInfo={true} />
       )}
-      ListEmptyComponent={<Text style={styles.noReviews}>No reviews yet</Text>}
+      ListEmptyComponent={
+        loading ? (
+          <Text style={styles.header}>Loading reviews...</Text>
+        ) : (
+          <Text style={styles.noReviews}>No reviews yet</Text>
+        )
+      }
+      // Wrap the function to avoid accidental double calls
+      onEndReached={() => fetchMore()}
+      onEndReachedThreshold={0.5}
       renderItem={({ item }) => <ReviewItem review={item} />}
     />
   );

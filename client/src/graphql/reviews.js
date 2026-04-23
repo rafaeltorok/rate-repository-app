@@ -1,11 +1,20 @@
 import { gql } from "graphql-tag";
 
 export const GET_REVIEWS = gql`
-  query ($id: ID!) {
-    repository(id: $id) {
+  query (
+    $id: ID!
+    $first: Int
+    $after: String
+  ) {
+    repository(
+      id: $id
+    ) {
       id
       fullName
-      reviews {
+      reviews (
+        first: $first
+        after: $after
+      ) {
         edges {
           node {
             id
@@ -17,6 +26,12 @@ export const GET_REVIEWS = gql`
               username
             }
           }
+          cursor
+        }
+        pageInfo {
+          endCursor
+          startCursor
+          hasNextPage
         }
       }
     }
