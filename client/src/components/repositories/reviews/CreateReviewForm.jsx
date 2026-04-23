@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
 // Component
 export default function CreateReviewForm({
   repositoriesList,
+  repositoryOwners,
   onSubmit,
   error,
 }) {
@@ -79,11 +80,11 @@ export default function CreateReviewForm({
         }
       >
         <Picker.Item label="Select repository owner" value="" />
-        {repositoriesList.map((repository) => (
+        {repositoryOwners.map((ownerName) => (
           <Picker.Item
-            key={repository.id}
-            label={repository.ownerName}
-            value={repository.ownerName}
+            key={ownerName}
+            label={ownerName}
+            value={ownerName}
           />
         ))}
       </Picker>

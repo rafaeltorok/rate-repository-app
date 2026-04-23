@@ -27,7 +27,21 @@ export default function CreateReview() {
   const [createReview, reviewResult] = useCreateReview();
 
   // Fetch the list with all available repositories
-  const { repositories } = useRepositories();
+  const { data } = useRepositories();
+
+  // Filter the repository information from the response
+  const repositories = data
+    ? data.repositories?.edges
+        .map((edge) => edge.node)
+        .filter((repo) => repo != null)
+    : [];
+
+  // Remove any owner duplicates from the list
+  const repositoryOwners = [
+    ...new Set(
+      repositories.map(repository => repository.ownerName)
+    )
+  ];
 
   // React Router hook
   const navigate = useNavigate();
@@ -65,6 +79,7 @@ export default function CreateReview() {
   return (
     <CreateReviewForm
       repositoriesList={repositories}
+      repositoryOwners={repositoryOwners}
       onSubmit={onSubmit}
       error={reviewResult?.error}
     />

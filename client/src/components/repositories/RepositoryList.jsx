@@ -47,10 +47,10 @@ export default function RepositoryList() {
     orderBy,
     orderDirection,
     searchKeyword: debounceValue,
-    first: 2,
+    first: 3,
   });
 
-  // Filter the repository information form the response
+  // Filter the repository information from the response
   const repositories = data
     ? data.repositories?.edges
         .map((edge) => edge.node)
