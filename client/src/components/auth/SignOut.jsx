@@ -27,6 +27,16 @@ const styles = StyleSheet.create({
     fontSize: theme.fontSize.large,
     textAlign: "center",
   },
+  messageContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  message: {
+    fontFamily: theme.fonts.main,
+    fontWeight: "bold",
+    fontSize: theme.fontSize.medium,
+  },
 });
 
 export default function SignOut() {
@@ -56,13 +66,19 @@ export default function SignOut() {
 
   // Loading screen
   if (loading) {
-    return <Text style={styles.header}>Loading user information...</Text>;
+    return (
+      <View style={styles.messageContainer}>
+        <Text style={styles.message}>Loading user information...</Text>
+      </View>
+    );
   }
 
   // Error screen
   if (error) {
     return (
-      <Text style={styles.header}>Failed to load the user information</Text>
+      <View style={styles.messageContainer}>
+        <Text style={styles.message}>Failed to load the user information</Text>
+      </View>
     );
   }
 

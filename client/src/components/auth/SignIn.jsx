@@ -23,6 +23,16 @@ const styles = StyleSheet.create({
     color: theme.colors.primary,
     textAlign: "center",
   },
+  messageContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  message: {
+    fontFamily: theme.fonts.main,
+    fontWeight: "bold",
+    fontSize: theme.fontSize.medium,
+  },
 });
 
 // Component
@@ -55,7 +65,11 @@ export default function SignIn() {
 
   // Loading screen
   if (result.loading) {
-    return <Text style={styles.header}>Authenticating user...</Text>;
+    return (
+      <View style={styles.messageContainer}>
+        <Text style={styles.message}>Authenticating user...</Text>
+      </View>
+    );
   }
 
   // Login form when there are no currently logged in users

@@ -25,11 +25,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: theme.colors.backgroundColor,
   },
-  header: {
+  messageContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  message: {
     fontFamily: theme.fonts.main,
     fontWeight: "bold",
-    fontSize: theme.fontSize.large,
-    textAlign: "center",
+    fontSize: theme.fontSize.medium,
   },
 });
 
@@ -40,8 +44,8 @@ export default function Main() {
 
   if (loading) {
     return (
-      <View style={styles.container}>
-        <Text style={styles.header}>Loading app information...</Text>
+      <View style={styles.messageContainer}>
+        <Text style={styles.message}>Loading app information...</Text>
       </View>
     );
   }

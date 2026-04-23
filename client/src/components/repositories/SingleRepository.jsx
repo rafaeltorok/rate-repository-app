@@ -16,11 +16,15 @@ const styles = StyleSheet.create({
     flex: 1,
     marginBottom: theme.spacing.small,
   },
-  header: {
+  messageContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  message: {
     fontFamily: theme.fonts.main,
     fontWeight: "bold",
-    fontSize: theme.fontSize.large,
-    textAlign: "center",
+    fontSize: theme.fontSize.medium,
   },
 });
 
@@ -34,13 +38,19 @@ export default function SingleRepository() {
 
   // Loading screen
   if (loading) {
-    return <Text style={styles.header}>Loading repository information...</Text>;
+    return (
+      <View style={styles.messageContainer}>
+        <Text style={styles.message}>Loading repository information...</Text>
+      </View>
+    );
   }
 
   // Error screen
   if (error) {
     return (
-      <Text style={styles.header}>Failed to load repository information</Text>
+      <View style={styles.messageContainer}>
+        <Text style={styles.message}>Failed to load repository information</Text>
+      </View>
     );
   }
 

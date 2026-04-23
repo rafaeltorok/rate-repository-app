@@ -28,6 +28,16 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: theme.spacing.medium,
   },
+  messageContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  message: {
+    fontFamily: theme.fonts.main,
+    fontWeight: "bold",
+    fontSize: theme.fontSize.medium,
+  },
 });
 
 // Separator
@@ -70,12 +80,20 @@ export default function MyReviews() {
 
   // Loading screen
   if (loading) {
-    return <Text style={styles.header}>Loading reviews...</Text>;
+    return (
+      <View style={styles.messageContainer}>
+        <Text style={styles.message}>Loading reviews...</Text>
+      </View>
+    );
   }
 
   // Error screen
   if (error) {
-    return <Text style={styles.header}>Failed to load reviews</Text>;
+    return (
+      <View style={styles.messageContainer}>
+        <Text style={styles.message}>Failed to load reviews</Text>
+      </View>
+    );
   }
 
   return (

@@ -1,5 +1,5 @@
 // React Native
-import { Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { useNavigate } from "react-router-native";
 
 // Components
@@ -13,11 +13,15 @@ import useRepositories from "../../hooks/useRepositories";
 import theme from "../../theme";
 
 const styles = StyleSheet.create({
-  header: {
+  messageContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  message: {
     fontFamily: theme.fonts.main,
     fontWeight: "bold",
-    fontSize: theme.fontSize.large,
-    textAlign: "center",
+    fontSize: theme.fontSize.medium,
   },
 });
 
@@ -72,7 +76,11 @@ export default function CreateReview() {
 
   // Loading screen
   if (reviewResult.loading) {
-    return <Text style={styles.header}>Authenticating user...</Text>;
+    return (
+      <View style={styles.messageContainer}>
+        <Text style={styles.message}>Adding review...</Text>
+      </View>
+    );
   }
 
   // Login form when there are no currently logged in users
