@@ -41,15 +41,15 @@ const ItemSeparator = () => <View style={styles.separator} />;
 export default class RepositoryListContainer extends React.Component {
   renderHeader = () => {
     // Filter only the necessary props for the component
-    const { value, setValue, searchQuery, setSearchQuery } = this.props;
+    const { value, setValue, searchKeyword, setSearchKeyword } = this.props;
 
     // Render the header component on the main page
     return (
       <RepositoryListHeader
         value={value}
         setValue={setValue}
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
+        searchKeyword={searchKeyword}
+        setSearchKeyword={setSearchKeyword}
       />
     );
   };
@@ -78,6 +78,8 @@ export default class RepositoryListContainer extends React.Component {
           keyExtractor={(item, index) => item?.id ?? index.toString()}
           ItemSeparatorComponent={ItemSeparator}
           ListHeaderComponent={this.renderHeader}
+          onEndReached={this.props.onEndReached}
+          onEndReachedThreshold={0.5}
           renderItem={({ item }) => (
             <Pressable
               onPress={() => this.props.handlePress(item.id)}

@@ -37,17 +37,25 @@ export default function RepositoryList() {
   }
 
   // Hold the repositories search field value
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchKeyword, setSearchKeyword] = useState("");
 
   // Handle the search query debounce
-  const [debounceValue] = useDebounce(searchQuery, 500);
+  const [debounceValue] = useDebounce(searchKeyword, 500);
 
   // Fetch the list with all available repositories
-  const { repositories, loading, error } = useRepositories(
+  const { data, loading, error, fetchMore } = useRepositories({
     orderBy,
     orderDirection,
-    debounceValue,
-  );
+    searchKeyword: debounceValue,
+    first: 2,
+  });
+
+  // Filter the repository information form the response
+  const repositories = data
+    ? data.repositories?.edges
+        .map((edge) => edge.node)
+        .filter((repo) => repo != null)
+    : [];
 
   // React Router hook
   const navigate = useNavigate();
@@ -65,9 +73,9 @@ export default function RepositoryList() {
       error={error}
       value={value}
       setValue={setValue}
-      searchQuery={searchQuery}
-      setSearchQuery={setSearchQuery}
+      setSearchKeyword={setSearchKeyword}
       handlePress={handlePress}
+      onEndReached={fetchMore}
     />
   );
 }

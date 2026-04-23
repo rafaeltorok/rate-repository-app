@@ -1,6 +1,7 @@
 // Apollo dependencies
 import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
 import { SetContextLink } from "@apollo/client/link/context";
+import { relayStylePagination } from "@apollo/client/utilities";
 
 // Client function
 export default function createApolloClient(authStorage) {
@@ -39,6 +40,15 @@ export default function createApolloClient(authStorage) {
             },
           },
         },
+        Query: {
+          fields: {
+            repositories: relayStylePagination([
+              "orderBy",
+              "orderDirection",
+              "searchKeyword"
+            ]),
+          }
+        }
       },
     }),
   });

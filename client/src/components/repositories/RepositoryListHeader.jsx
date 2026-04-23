@@ -7,16 +7,16 @@ import { Searchbar } from "react-native-paper";
 export default function RepositoryListHeader({
   value,
   setValue,
-  searchQuery,
-  setSearchQuery,
+  searchKeyword,
+  setSearchKeyword,
 }) {
   return (
     <View>
       {/* Search bar to filter repositories by name */}
       <Searchbar
         placeholder="Search repositories..."
-        onChangeText={setSearchQuery}
-        value={searchQuery}
+        onChangeText={setSearchKeyword}
+        value={searchKeyword}
       />
 
       {/* Choose the ordering method */}
