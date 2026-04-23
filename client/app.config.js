@@ -26,6 +26,15 @@ export default {
     },
     extra: {
       env: process.env.ENV, // For command line arguments. e.g. ENV=development
+      "eas": {
+        "projectId": "59ceb968-56a3-41c6-8a39-db43e510e806"
+      }
     },
+    "updates": {
+      "url": "https://u.expo.dev/59ceb968-56a3-41c6-8a39-db43e510e806"
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    }
   },
 };

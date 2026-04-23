@@ -1,9 +1,10 @@
 # Rate Repository App
 ![CI](https://github.com/Kaltsoon/rate-repository-api/workflows/CI/badge.svg)
 
-An Android mobile app to rate Github repositories. Based on the project from the React Native section of the FullStackOpen course by MOOC Finland.
 
 ## Table of Contents
+- [About](#about)
+- [Try the app](#try-the-app)
 - [Requirements](#requirements)
 - [Env](#env)
 - [Client](#client)
@@ -11,6 +12,18 @@ An Android mobile app to rate Github repositories. Based on the project from the
 - [Tests](#tests)
 - [FAQ](#-faq)
 - [Notes](#notes)
+
+
+## About
+A mobile application for rating Github repositories. Users can browse Github-style repositories, view individual repository details and reviews, and create new reviews when signed in. The app is built with React Native and Expo, and it uses a GraphQL API as its backend. Created as part of Full Stack Open, part 10.
+
+Available on the [Expo Application Services⇗](https://expo.dev/accounts/rafaeltorok/projects/rate-repository-app/updates/cd196985-1230-428d-a3fc-fc4962c82935)
+
+
+## Try the app
+You can try the app on your phone by scanning the following QR code with Expo Go:
+
+<img src="./resources/img/eas-update.svg" alt="EAS QR code" width="300"/>
 
 
 ## Requirements
@@ -22,7 +35,7 @@ The following environment variables are required:
 
 - Client
   ```env
-  EXPO_PUBLIC_APOLLO_SERVER_URL=http://<server-ip>:4000/graphql
+  EXPO_PUBLIC_APOLLO_URI=http://<server-ip>:4000/graphql
   ```
 
 - Server

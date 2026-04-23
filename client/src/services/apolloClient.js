@@ -7,7 +7,7 @@ import { relayStylePagination } from "@apollo/client/utilities";
 export default function createApolloClient(authStorage) {
   // Handle the link to the Apollo Server
   const httpLink = new HttpLink({
-    uri: process.env.EXPO_PUBLIC_APOLLO_SERVER_URL,
+    uri: process.env.EXPO_PUBLIC_APOLLO_URI,
   });
 
   // Handle the current logged in user access token
