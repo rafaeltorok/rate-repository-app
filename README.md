@@ -10,6 +10,7 @@
 - [Client](#client)
 - [Server](#server)
 - [Tests](#tests)
+- [EAS](#eas)
 - [FAQ](#-faq)
 - [Notes](#notes)
 
@@ -158,6 +159,13 @@ A handy way to authorize requests in the Apollo Sandbox is to retrieve an access
     ```bash
     npm run test
     ```
+
+
+## EAS
+To update the app using ESA Update
+```bash
+npx eas-cli@latest update --branch main --environment preview --message "My message"
+```
 
 
 ## ❓ FAQ
