@@ -40,23 +40,17 @@ export default function ReviewListContainer({ id, repository }) {
     first: 5,
   });
 
-  // Filter the reviews form the response data
+  // Filter the reviews from the response data
   const reviews = data?.repository?.reviews?.edges
     ? data.repository.reviews.edges
         .map((edge) => edge.node)
         .filter((review) => review != null)
     : [];
 
-  // Order the reviews from newest to oldest
-  const orderedReviews = reviews.slice().sort((a, b) => {
-    // Create a copy of the original array to be sorted
-    return new Date(b.createdAt) - new Date(a.createdAt);
-  });
-
   // Render the container for the reviews list
   return (
     <FlatList
-      data={orderedReviews}
+      data={reviews}
       keyExtractor={(item, index) => item?.id ?? index.toString()}
       ItemSeparatorComponent={ItemSeparator}
       ListHeaderComponent={() => (

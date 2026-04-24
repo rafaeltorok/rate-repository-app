@@ -53,7 +53,11 @@ export const resolvers = {
           repositoryId: id,
         })
         .cursorPaginate({
-          orderBy: [{ column: 'createdAt', direction: 'desc' }, 'id'],
+          // Ensure stable cursor pagination ordering by explicitly defining direction for all orderBy fields
+          orderBy: [
+            { column: 'createdAt', order: 'desc' },
+            { column: 'id', order: 'desc' },
+          ],
           first,
           after,
         });
