@@ -26,12 +26,6 @@ const styles = StyleSheet.create({
   separator: {
     height: theme.spacing.medium,
   },
-  pressed: {
-    backgroundColor: theme.colors.input,
-  },
-  normal: {
-    backgroundColor: theme.colors.white,
-  },
 });
 
 // Separator
@@ -70,7 +64,6 @@ export default class RepositoryListContainer extends React.Component {
 
   // Render the repositories list
   render() {
-    // Render the flatlist containing all of the repositories
     return (
       <View style={styles.container}>
         <FlatList
@@ -81,13 +74,10 @@ export default class RepositoryListContainer extends React.Component {
           onEndReached={this.props.onEndReached}
           onEndReachedThreshold={0.5}
           renderItem={({ item }) => (
-            <Pressable
-              onPress={() => this.props.handlePress(item.id)}
-              style={({ pressed }) =>
-                pressed ? styles.pressed : styles.normal
-              }
-            >
-              <RepositoryItem repository={item} />
+            <Pressable onPress={() => this.props.handlePress(item.id)}>
+              {({ pressed }) => (
+                <RepositoryItem repository={item} isPressed={pressed} />
+              )}
             </Pressable>
           )}
           ListEmptyComponent={this.renderEmptyState}

@@ -10,6 +10,7 @@ const theme = {
     input: "#757575",
     error: "#d73a4a",
     appBar: "#24292e",
+    pressed: "#cfd3d8",
   },
   fonts: {
     main: Platform.select({

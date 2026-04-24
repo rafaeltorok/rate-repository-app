@@ -34,7 +34,7 @@ export default function createApolloClient(authStorage) {
       typePolicies: {
         Repository: {
           fields: {
-            reviews: relayStylePagination()
+            reviews: relayStylePagination(),
           },
         },
         Query: {
@@ -42,10 +42,10 @@ export default function createApolloClient(authStorage) {
             repositories: relayStylePagination([
               "orderBy",
               "orderDirection",
-              "searchKeyword"
+              "searchKeyword",
             ]),
-          }
-        }
+          },
+        },
       },
     }),
   });

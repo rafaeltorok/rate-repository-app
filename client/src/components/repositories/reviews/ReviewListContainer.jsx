@@ -37,7 +37,7 @@ export default function ReviewListContainer({ id, repository }) {
   // Fetch all reviews from a particular repository
   const { data, loading, fetchMore } = useReviews({
     id,
-    first: 3
+    first: 5,
   });
 
   // Filter the reviews form the response data

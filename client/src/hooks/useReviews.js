@@ -18,14 +18,15 @@ export default function useReviews(variables) {
   // Handle pagination
   const handleFetchMore = async () => {
     // Check if there are more pages
-    const canFetchMore = !loading && data?.repository?.reviews?.pageInfo?.hasNextPage;
- 
+    const canFetchMore =
+      !loading && data?.repository?.reviews?.pageInfo?.hasNextPage;
+
     if (!canFetchMore || isFetchingMore) {
       return;
     }
 
     setIsFetchingMore(true);
- 
+
     await fetchMore({
       variables: {
         ...variables,
@@ -37,10 +38,10 @@ export default function useReviews(variables) {
   };
 
   // Return the query response
-  return { 
+  return {
     data,
-    loading, 
+    loading,
     error,
-    fetchMore: handleFetchMore
+    fetchMore: handleFetchMore,
   };
 }

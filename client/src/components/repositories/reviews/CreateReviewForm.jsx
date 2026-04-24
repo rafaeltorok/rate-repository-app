@@ -81,11 +81,7 @@ export default function CreateReviewForm({
       >
         <Picker.Item label="Select repository owner" value="" />
         {repositoryOwners.map((ownerName) => (
-          <Picker.Item
-            key={ownerName}
-            label={ownerName}
-            value={ownerName}
-          />
+          <Picker.Item key={ownerName} label={ownerName} value={ownerName} />
         ))}
       </Picker>
       {formik.touched.ownerName && formik.errors.ownerName && (

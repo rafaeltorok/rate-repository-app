@@ -47,7 +47,7 @@ export default function RepositoryList() {
     orderBy,
     orderDirection,
     searchKeyword: debounceValue,
-    first: 3,
+    first: 5,
   });
 
   // Filter the repository information from the response

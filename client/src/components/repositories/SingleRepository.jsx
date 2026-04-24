@@ -49,7 +49,9 @@ export default function SingleRepository() {
   if (error) {
     return (
       <View style={styles.messageContainer}>
-        <Text style={styles.message}>Failed to load repository information</Text>
+        <Text style={styles.message}>
+          Failed to load repository information
+        </Text>
       </View>
     );
   }

@@ -14,7 +14,6 @@ import theme from "../../theme";
 const styles = StyleSheet.create({
   repositoryItem: {
     padding: theme.spacing.large,
-    backgroundColor: theme.colors.white,
     marginBottom: theme.spacing.medium,
   },
   header: {
@@ -23,10 +22,20 @@ const styles = StyleSheet.create({
     fontSize: theme.fontSize.large,
     textAlign: "center",
   },
+  pressed: {
+    backgroundColor: theme.colors.pressed,
+  },
+  normal: {
+    backgroundColor: theme.colors.white,
+  },
 });
 
 // Component
-export default function RepositoryItem({ repository, showFullInfo }) {
+export default function RepositoryItem({
+  repository,
+  showFullInfo,
+  isPressed = false,
+}) {
   function handleUrl() {
     if (repository.url) Linking.openURL(repository.url);
   }
@@ -42,7 +51,14 @@ export default function RepositoryItem({ repository, showFullInfo }) {
 
   // Display the full repository info on the screen
   return (
-    <View style={styles.repositoryItem} testID="repositoryItem">
+    <View
+      style={
+        isPressed
+          ? [styles.repositoryItem, styles.pressed]
+          : [styles.repositoryItem, styles.normal]
+      }
+      testID="repositoryItem"
+    >
       <ItemHeader repository={repository} />
       <ItemStatistics repository={repository} />
       {showFullInfo && <Button title="Open in Github" onPress={handleUrl} />}

@@ -42,9 +42,7 @@ export default function CreateReview() {
 
   // Remove any owner duplicates from the list
   const repositoryOwners = [
-    ...new Set(
-      repositories.map(repository => repository.ownerName)
-    )
+    ...new Set(repositories.map((repository) => repository.ownerName)),
   ];
 
   // React Router hook

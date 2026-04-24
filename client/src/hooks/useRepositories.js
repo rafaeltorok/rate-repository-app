@@ -20,18 +20,18 @@ export default function useRepositories(variables) {
     fetchPolicy: "cache-and-network",
     variables: guardedVariables,
   });
-  
+
   // Handle pagination
   const handleFetchMore = () => {
     if (!isPaginated) return;
 
     // Check if there are more pages
     const canFetchMore = !loading && data?.repositories?.pageInfo?.hasNextPage;
- 
+
     if (!canFetchMore) {
       return;
     }
- 
+
     fetchMore({
       variables: {
         ...guardedVariables,
@@ -41,9 +41,9 @@ export default function useRepositories(variables) {
   };
 
   // Return the query response
-  return { 
-    data, 
-    loading, 
+  return {
+    data,
+    loading,
     error,
     fetchMore: handleFetchMore,
   };
