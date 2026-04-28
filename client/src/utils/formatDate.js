@@ -18,14 +18,12 @@ export default function formatDate(date) {
 
   // ISO date
   if (date.includes("T")) {
-    const newDate = new Date(date);
-    return format(newDate, "dd MMM yyyy");
+    return format(date, "dd MMM yyyy");
   }
 
   // Fallback for format: YYYY-MM-DD
   if (/^\d{4}-\d{2}-\d{2}$/.test(date)) {
-    const [year, month, day] = date.split("-");
-    return format(new Date(year, month - 1, day), "dd MMM yyyy");
+    return format(parsedDate, "dd MMM yyyy");
   }
 
   // Unknown format
