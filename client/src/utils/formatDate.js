@@ -3,7 +3,10 @@ import { format, parseISO, isValid } from "date-fns";
 
 // Convert a string input to a valid date format
 export default function formatDate(date) {
-  if (!date) return "";
+  // Guard against empty or null values
+  if (!date) {
+    throw new Error(`Invalid date: ${date}`);
+  }
 
   // Parse the date to an ISO format
   const parsedDate = parseISO(date);
