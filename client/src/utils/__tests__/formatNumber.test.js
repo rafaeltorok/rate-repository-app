@@ -4,7 +4,7 @@ import formatNumber from "../formatNumber";
 // Tests
 describe("Testing the formatNumber function outputs", () => {
   describe("Valid numeric values", () => {
-    it("a valid number should return it as a string", () => {
+    it("a valid number should be returned as a string", () => {
       const number = 100;
 
       expect(formatNumber(number)).toBe("100");
