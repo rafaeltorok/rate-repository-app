@@ -51,7 +51,7 @@ export default function ItemStatistics({ repository }) {
       </View>
       <View style={styles.section}>
         <Text style={styles.data}>
-          {formatNumber(repository.ratingAverage)}
+          {repository.ratingAverage}
         </Text>
         <Text style={styles.label}>Rating</Text>
       </View>
