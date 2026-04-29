@@ -4,12 +4,21 @@
 An Android mobile app to rate Github repositories. Based on the project from the React Native section of the FullStackOpen course by MOOC Finland.
 
 ## Table of Contents
+- [About](#about)
 - [Env](#env)
 - [Client](#client)
 - [Server](#server)
 - [Tests](#tests)
 - [FAQ](#-faq)
 - [Notes](#notes)
+
+
+## About
+**This version of the app requires Expo SDK 50.**
+
+The legacy version of the app based on the old version of the FullStackOpen course, Part 10 on React Native, using the old SDK version.
+
+- To run it on Android, install the proper version of [Expo Go⇗](https://expo.dev/go?sdkVersion=50&platform=android&device=true)
 
 
 ## Env
