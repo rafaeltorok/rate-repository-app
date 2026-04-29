@@ -27,6 +27,18 @@ describe("Testing the formatNumber function outputs", () => {
 
       expect(formatNumber(number)).toBe("0");
     });
+
+    it("1k should be properly displayed", () => {
+      const number = 1000;
+
+      expect(formatNumber(number)).toBe("1.0k");
+    });
+
+    it("1m should be properly displayed", () => {
+      const number = 1000000;
+
+      expect(formatNumber(number)).toBe("1.0m");
+    });
   });
 
   describe("Invalid non-numeric values", () => {
