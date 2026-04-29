@@ -9,10 +9,13 @@ import {
 // Component
 import SignInForm from "../SignInForm";
 
+// CSS styles
+import theme from "../../../theme";
+
 // Tests
-describe("SignIn", () => {
-  describe("SignInForm", () => {
-    it("calls onSubmit function with correct arguments when a valid form is submitted", async () => {
+describe("Testing the Sign in form", () => {
+  describe("The onSubmit function", () => {
+    it("calls the function with correct arguments when a valid form is submitted", async () => {
       // Mock the submit function to the form
       const onSubmit = jest.fn();
 
@@ -38,6 +41,25 @@ describe("SignIn", () => {
           password: "password",
         });
       });
+    });
+  });
+
+  describe("Error message", () => {
+    it("the invalid credentials error message is properly displayed", () => {
+      // Mock the submit function to the form
+      const onSubmit = jest.fn();
+
+      // Render the Sign-in form
+      render(<SignInForm onSubmit={onSubmit} error={{ message: "Invalid username or password" }} />);
+
+      // Get the error message element
+      const errorMessage = screen.getByText(/invalid username or password/i);
+
+      // Check if the error message is displayed
+      expect(errorMessage).toBeOnTheScreen();
+
+      // Confirm the message appears on the correct color
+      expect(errorMessage).toHaveStyle({ color: theme.colors.error });
     });
   });
 });
